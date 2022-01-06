@@ -1,0 +1,97 @@
+.w-100 {
+  width: 100% !important;
+}
+
+.carousel {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.cards {
+  width: calc(100% - 80px);
+  overflow: hidden;
+  margin-left: 1px;
+}
+
+.overflow {
+  position: relative;
+  transition: left 0.5s ease-in-out;
+}
+
+.card {
+  border-radius: 10px;
+  display: inline-block;
+  margin-right: 10px;
+  position: relative;
+  margin-bottom: 40px;
+  cursor: pointer;
+  min-height: 325px;
+}
+
+.no-right-margin {
+  margin-right: 0px;
+}
+
+.card span {
+  font-size: 48px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.left,
+.right {
+  height: 60px;
+  width: 60px;
+  background-color: #fff;
+  border-radius: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.left.disabled,
+.right.disabled {
+  width: 0px;
+}
+
+.left {
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.right {
+  right: 0;
+  transform: translateX(50%);
+}
+
+.card-img-top {
+  border-radius: 10px;
+  height: 212px;
+}
+
+.bi-arrow-right {
+  margin: 0;
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.bi-arrow-left {
+  margin: 0;
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
+.list-group-item {
+  padding: 10px 0;
+}

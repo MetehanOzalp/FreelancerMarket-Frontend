@@ -1,0 +1,189 @@
+<header
+  class="p-3 text-white"
+  style="background-color: #201a3d"
+  *ngIf="!isAuthenticated"
+>
+  <div class="container">
+    <div
+      class="
+        d-flex
+        flex-wrap
+        align-items-center
+        justify-content-center justify-content-lg-start
+      "
+    >
+      <a class="navbar-brand" href="#">
+        <img
+          src="../../../assets/images/logo-svg/koyu-zemin.svg"
+          alt=""
+          width="150"
+          height="35"
+          class="d-inline-block align-text-top"
+        />
+      </a>
+      <div class="col-2"></div>
+      <div class="col-4">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input
+            type="search"
+            class="form-control form-control-dark search-input-logout"
+            placeholder="Arama Yap..."
+            aria-label="Search"
+          />
+        </form>
+      </div>
+      <div class="col-2"></div>
+
+      <div class="text-end d-flex justify-content-end">
+        <button type="button" class="btn btn-outline-light me-2">
+          Giriş Yap
+        </button>
+        <button type="button" class="btn btn-danger">Kayıt Ol</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ********************************************************************************************************* -->
+
+<header
+  class="p-3 text-white"
+  style="background-color: #201a3d"
+  *ngIf="isAuthenticated"
+>
+  <div class="container">
+    <div
+      class="
+        d-flex
+        flex-wrap
+        align-items-center
+        justify-content-center justify-content-lg-start
+      "
+    >
+      <a class="navbar-brand" href="#">
+        <img
+          src="../../../assets/images/logo-svg/koyu-zemin.svg"
+          alt=""
+          width="150"
+          height="35"
+          class="d-inline-block align-text-top"
+        />
+      </a>
+      <div class="col-1"></div>
+      <div class="col-4">
+        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input
+            type="search"
+            class="form-control form-control-dark search-input-logout"
+            placeholder="Arama Yap..."
+            aria-label="Search"
+          />
+        </form>
+      </div>
+      <div class="col-1"></div>
+
+      <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
+        <li>
+          <a href="#" class="nav-link px-2 text-white"
+            ><i
+              class="bi bi-house"
+              style="font-size: 1.5rem; margin-right: 5px"
+            ></i
+            >Anasayfa</a
+          >
+        </li>
+        <li>
+          <a href="#" class="nav-link px-2 text-white"
+            ><i
+              class="bi bi-chat-right"
+              style="font-size: 1.5rem; margin-right: 5px"
+            ></i
+            >Mesajlar</a
+          >
+        </li>
+      </ul>
+
+      <div class="dropdown text-end">
+        <a
+          href="#"
+          class="
+            d-block
+            link-dark
+            text-decoration-none
+            dropdown-toggle
+            text-white
+            mt-2
+          "
+          id="dropdownUser1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img
+            src="https://github.com/mdo.png"
+            alt="mdo"
+            width="40"
+            height="40"
+            class="rounded-circle"
+          />Metehan Özalp
+        </a>
+        <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+          <li><a class="dropdown-item" href="#">Profilim</a></li>
+          <li><a class="dropdown-item" href="#">Hesabım</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ************************************************************************************************* -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-2 bg-body rounded">
+  <div class="container">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse d-flex justify-content-center"
+      id="navbarNavDropdown"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" *ngFor="let topCategory of topCategories">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdownMenuLink"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            routerLink="/top-categories/{{ topCategory.id }}"
+          >
+            {{ topCategory.name }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li
+              *ngFor="
+                let subCategory of getSubCategoriesByTopCategory(topCategory.id)
+              "
+            >
+              <a
+                class="dropdown-item"
+                routerLink="/sub-categories/{{ subCategory.id }}"
+                >{{ subCategory.name }}</a
+              >
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

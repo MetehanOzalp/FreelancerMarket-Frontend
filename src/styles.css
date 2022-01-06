@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url("http://fonts.cdnfonts.com/css/sofia-pro");
+
+body {
+  background-color: #f4f5f7;
+  font-family: "Sofia Pro", sans-serif;
+}

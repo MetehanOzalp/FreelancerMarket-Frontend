@@ -1,0 +1,70 @@
+<div class="carousel" #container>
+  <div
+    class="left"
+    *ngIf="totalPages > 1 && currentPage != 0.9999999999999996"
+    (click)="currentPage != 1 && changePage(-1 / 4)"
+    [ngClass]="{ disabled: currentPage === 1 }"
+  >
+    <i
+      class="bi bi-arrow-left"
+      *ngIf="currentPage != 1"
+      style="font-size: 2rem; color: #201a3d"
+    ></i>
+  </div>
+  <div class="cards" [ngClass]="{ 'w-100': totalPages === 1 }">
+    <h3 class="title">En sevilen <b>Freelancer'lar</b></h3>
+    <div
+      class="overflow"
+      [ngStyle]="{ width: overflowWidth, left: pagePosition }"
+    >
+      <!-- <div
+        class="card"
+        style="width: 18rem"
+        *ngFor="let i of arr; let index = index"
+        [ngStyle]="{ width: cardWidth }"
+      ></div> -->
+
+      <!-- /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+      <div
+        class="card"
+        style="width: 18rem"
+        *ngFor="let freelancer of mostPopularFreelancers; let index = index"
+        [ngStyle]="{ width: cardWidth }"
+      >
+        <img
+          src="{{ freelancer.imagePath }}"
+          class="card-img-top rounded-circle"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center">{{ freelancer.userName }}</h5>
+          <p class="card-text">123 Tamamlanan Sipariş</p>
+          <a href="#" class="btn btn-primary d-flex justify-content-center"
+            >Profile Git</a
+          >
+        </div>
+      </div>
+      <!-- /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
+
+      <!-- <div
+          class="card"
+          *ngFor="let i of arr; let index = index"
+          [ngStyle]="{ width: cardWidth }"
+        >
+          <span>{{ i }}</span>
+        </div> -->
+    </div>
+  </div>
+  <div
+    class="right"
+    *ngIf="totalPages > 1 && currentPage != 6.343999999999998"
+    (click)="currentPage != totalPages && changePage(+1 / 4)"
+    [ngClass]="{ disabled: currentPage === totalPages }"
+  >
+    <i
+      class="bi bi-arrow-right"
+      *ngIf="currentPage != totalPages"
+      style="font-size: 2rem; color: #201a3d"
+    ></i>
+  </div>
+</div>
