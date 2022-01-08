@@ -18,6 +18,16 @@ export class SubCategoryService {
     return this.httpClient.get<ListResponseModel<SubCategory>>(newPath);
   }
 
+  getSubCategoriesByTopCategoryName(
+    topCategoryName: string
+  ): Observable<ListResponseModel<SubCategory>> {
+    let newPath =
+      this.apiUrl +
+      '/getByTopCategoryName?topCategoryName=' +
+      encodeURIComponent(topCategoryName);
+    return this.httpClient.get<ListResponseModel<SubCategory>>(newPath);
+  }
+
   getMostPopularSubCategories(): Observable<ListResponseModel<SubCategory>> {
     let newPath = this.apiUrl + '/getMostPopularSubCategories';
     return this.httpClient.get<ListResponseModel<SubCategory>>(newPath);

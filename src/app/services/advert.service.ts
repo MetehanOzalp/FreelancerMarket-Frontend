@@ -1,3 +1,4 @@
+import { AdvertFilter } from '../models/advertFilter';
 import { ListResponseModel } from './../models/listResponseModel';
 import { Advert } from './../models/advert';
 import { Observable } from 'rxjs';
@@ -13,8 +14,22 @@ export class AdvertService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getMostPopularFreelancers(): Observable<ListResponseModel<Advert>> {
+  getMostPopularJobAdverts(): Observable<ListResponseModel<Advert>> {
     let newPath = this.apiUrl + '/getMostPopularJobAdverts';
     return this.httpClient.get<ListResponseModel<Advert>>(newPath);
+  }
+
+  getByPageNumberAndFilter(
+    pageNumber: number,
+    subCategoryName: string,
+    filter: AdvertFilter
+  ): Observable<ListResponseModel<Advert>> {
+    let newPath =
+      this.apiUrl +
+      '/getByFilter?pageNumber=' +
+      pageNumber +
+      '&subCategoryName=' +
+      encodeURIComponent(subCategoryName);
+    return this.httpClient.post<ListResponseModel<Advert>>(newPath, filter);
   }
 }

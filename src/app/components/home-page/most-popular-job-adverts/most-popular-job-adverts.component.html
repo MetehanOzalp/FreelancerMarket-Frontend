@@ -32,10 +32,36 @@
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
-              <h5 class="card-title">İlan Bilgileri vs</h5>
+              <div class="d-flex bd-highlight">
+                <div class="p-2 bd-highlight">
+                  <h6 class="card-title">
+                    <a
+                      href="#"
+                      class="d-block link-dark text-decoration-none"
+                      aria-expanded="false"
+                    >
+                      <img
+                        src="https://github.com/mdo.png"
+                        alt="mdo"
+                        width="40"
+                        height="40"
+                        style="margin-top: 15px"
+                        class="rounded-circle"
+                      />
+                      {{ advert.freelancer.userName }}
+                    </a>
+                  </h6>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    {{ advert.freelancer.appellation }}
+                  </h6>
+                </div>
+                <div class="ms-auto p-2 bd-highlight">
+                  <p class="price">250TL</p>
+                </div>
+              </div>
             </li>
             <li class="list-group-item">
-              <p class="card-text">{{ advert.title }}</p>
+              <h6 class="card-text">{{ advert.title }}</h6>
             </li>
             <li class="list-group-item">
               <p class="card-text">
@@ -50,18 +76,6 @@
             </li>
           </ul>
         </div>
-        <!-- <div
-          class="card-footer text-muted"
-          style="font-size: 2rem; color: #201a3d; margin-right: 5px"
-        >
-          <a routerLink="" class="icon"
-            ><i
-              class="bi bi-plus-circle-fill"
-              style="font-size: 2rem; margin-right: 5px"
-            ></i
-            >Favorilere ekle</a
-          >
-        </div> -->
       </div>
       <!-- /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/* -->
     </div>

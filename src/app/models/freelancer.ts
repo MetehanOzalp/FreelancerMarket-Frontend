@@ -8,6 +8,7 @@ import { Wallet } from './wallet';
 export interface Freelancer extends User {
   imagePath: string;
   about: string;
+  appellation: string;
   wallet: Wallet;
   walletTransactions: WalletTransaction[];
   operationClaims: OperationClaim[];

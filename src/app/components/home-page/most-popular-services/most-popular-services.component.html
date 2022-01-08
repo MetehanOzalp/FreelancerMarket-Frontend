@@ -23,7 +23,7 @@
         style="width: 18rem"
         *ngFor="let subCategory of mostPopularSubCategories; let index = index"
         [ngStyle]="{ width: cardWidth }"
-        routerLink=""
+        routerLink="/sub-categories/{{ subCategory.name }}"
       >
         <img src="{{ subCategory.imagePath }}" class="card-img-top" alt="..." />
         <div class="card-body">

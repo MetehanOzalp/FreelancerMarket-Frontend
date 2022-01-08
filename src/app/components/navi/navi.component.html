@@ -5,12 +5,7 @@
 >
   <div class="container">
     <div
-      class="
-        d-flex
-        flex-wrap
-        align-items-center
-        justify-content-center justify-content-lg-start
-      "
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
     >
       <a class="navbar-brand" href="#">
         <img
@@ -53,12 +48,7 @@
 >
   <div class="container">
     <div
-      class="
-        d-flex
-        flex-wrap
-        align-items-center
-        justify-content-center justify-content-lg-start
-      "
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
     >
       <a class="navbar-brand" href="#">
         <img
@@ -106,14 +96,7 @@
       <div class="dropdown text-end">
         <a
           href="#"
-          class="
-            d-block
-            link-dark
-            text-decoration-none
-            dropdown-toggle
-            text-white
-            mt-2
-          "
+          class="d-block link-dark text-decoration-none dropdown-toggle text-white mt-2"
           id="dropdownUser1"
           data-bs-toggle="dropdown"
           aria-expanded="false"
@@ -139,7 +122,9 @@
 
 <!-- ************************************************************************************************* -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-2 bg-body rounded">
+<nav
+  class="navbar navbar-expand-lg navbar-light bg-light shadow p-2 bg-body rounded"
+>
   <div class="container">
     <button
       class="navbar-toggler"
@@ -165,7 +150,7 @@
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            routerLink="/top-categories/{{ topCategory.id }}"
+            routerLink="/top-categories/{{ topCategory.name }}"
           >
             {{ topCategory.name }}
           </a>
@@ -177,7 +162,7 @@
             >
               <a
                 class="dropdown-item"
-                routerLink="/sub-categories/{{ subCategory.id }}"
+                routerLink="/sub-categories/{{ subCategory.name }}"
                 >{{ subCategory.name }}</a
               >
             </li>

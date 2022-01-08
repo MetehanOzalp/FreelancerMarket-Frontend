@@ -27,7 +27,11 @@
   position: relative;
   margin-bottom: 40px;
   cursor: pointer;
-  min-height: 325px;
+  min-height: 268px;
+}
+
+.card-text {
+  margin-top: -15px;
 }
 
 .no-right-margin {
@@ -70,8 +74,8 @@
 }
 
 .card-img-top {
-  border-radius: 10px;
-  height: 212px;
+  border-radius: 10px 10px 0px 0px;
+  height: 180px;
 }
 
 .bi-arrow-right {

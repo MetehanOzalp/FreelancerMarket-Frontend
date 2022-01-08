@@ -44,7 +44,7 @@ export class MostPopularJobAdvertsComponent implements OnInit {
   }
 
   getMostPopularJobAdverts() {
-    this.advertService.getMostPopularFreelancers().subscribe((response) => {
+    this.advertService.getMostPopularJobAdverts().subscribe((response) => {
       this.mostPopularJobAdverts = response.data;
       while (this.mostPopularJobAdverts.length < 12) {
         this.mostPopularJobAdverts.push(response.data[0]);

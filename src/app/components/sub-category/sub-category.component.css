@@ -1,18 +1,17 @@
-.w-100 {
-  width: 100% !important;
-}
-
-.carousel {
-  display: flex;
-  position: relative;
-  justify-content: center;
+.title {
+  font-size: 34px;
+  font-weight: 800;
   margin-top: 40px;
+  color: #2d3640;
 }
 
-.cards {
-  width: calc(100% - 80px);
-  overflow: hidden;
-  margin-left: 1.5px;
+.custom-container {
+  border: solid;
+  border-color: #fff;
+  width: 100%;
+  min-height: 125px;
+  margin-bottom: 20px;
+  background-color: #fff;
 }
 
 .overflow {
@@ -21,9 +20,11 @@
 }
 
 .card {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
   border-radius: 10px;
   display: inline-block;
-  margin-right: 10px;
   position: relative;
 }
 
@@ -138,4 +139,12 @@
   margin-top: -10px;
   margin-left: -50px;
   position: relative;
+}
+
+.card-description {
+  min-height: 40px;
+}
+
+.advert-count {
+  margin-top: 20px;
 }

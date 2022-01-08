@@ -1,3 +1,4 @@
+import { Freelancer } from './freelancer';
 import { AdvertComment } from './advertComment';
 import { SubCategory } from './subCategory';
 export interface Advert {
@@ -9,6 +10,7 @@ export interface Advert {
   info: string;
   imagePath: string;
   date: Date;
+  freelancer: Freelancer;
   subCategory: SubCategory;
   advertComments: AdvertComment[];
 }
