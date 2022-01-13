@@ -19,12 +19,18 @@
       <div class="col-2"></div>
       <div class="col-4">
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input
-            type="search"
-            class="form-control form-control-dark search-input-logout"
-            placeholder="Arama Yap..."
-            aria-label="Search"
-          />
+          <div class="input-icons">
+            <i class="bi bi-search"></i>
+            <input
+              type="search"
+              (keydown.enter)="createFilter()"
+              [(ngModel)]="filter.term"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control form-control-dark search-input-logout input-field"
+              placeholder="Arama Yap..."
+              aria-label="Search"
+            />
+          </div>
         </form>
       </div>
       <div class="col-2"></div>
@@ -62,12 +68,18 @@
       <div class="col-1"></div>
       <div class="col-4">
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input
-            type="search"
-            class="form-control form-control-dark search-input-logout"
-            placeholder="Arama Yap..."
-            aria-label="Search"
-          />
+          <div class="input-icons">
+            <i class="bi bi-search"></i>
+            <input
+              type="search"
+              (keydown.enter)="createFilter()"
+              [(ngModel)]="filter.term"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control form-control-dark search-input-logout"
+              placeholder="Arama Yap..."
+              aria-label="Search"
+            />
+          </div>
         </form>
       </div>
       <div class="col-1"></div>
@@ -150,7 +162,7 @@
             role="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            routerLink="/top-categories/{{ topCategory.name }}"
+            routerLink="/top-categories/{{ getUrl(topCategory.name) }}"
           >
             {{ topCategory.name }}
           </a>
@@ -162,7 +174,7 @@
             >
               <a
                 class="dropdown-item"
-                routerLink="/sub-categories/{{ subCategory.name }}"
+                routerLink="/sub-categories/{{ getUrl(subCategory.name) }}"
                 >{{ subCategory.name }}</a
               >
             </li>

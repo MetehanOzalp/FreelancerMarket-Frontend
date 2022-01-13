@@ -13,6 +13,11 @@
   </div>
   <div class="cards" [ngClass]="{ 'w-100': totalPages === 1 }">
     <h3 class="title">En popüler <b>Hizmetler</b></h3>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status" *ngIf="!dataLoaded">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <div
       class="overflow"
       [ngStyle]="{ width: overflowWidth, left: pagePosition }"

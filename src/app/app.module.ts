@@ -13,9 +13,21 @@ import { MostPopularJobAdvertsComponent } from './components/home-page/most-popu
 import { MostPopularServicesComponent } from './components/home-page/most-popular-services/most-popular-services.component';
 import { TopCategoryComponent } from './components/top-category/top-category.component';
 import { SubCategoryComponent } from './components/sub-category/sub-category.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
-  declarations: [AppComponent, NaviComponent, HomePageComponent, SidebarComponent, MostPopularFreelancersComponent, MostPopularJobAdvertsComponent, MostPopularServicesComponent, TopCategoryComponent, SubCategoryComponent],
+  declarations: [
+    AppComponent,
+    NaviComponent,
+    HomePageComponent,
+    SidebarComponent,
+    MostPopularFreelancersComponent,
+    MostPopularJobAdvertsComponent,
+    MostPopularServicesComponent,
+    TopCategoryComponent,
+    SubCategoryComponent,
+    SearchComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

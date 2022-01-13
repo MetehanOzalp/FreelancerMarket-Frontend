@@ -99,3 +99,7 @@
 .list-group-item {
   padding: 10px 0;
 }
+
+.spinner-border {
+  color: #e83c5f;
+}

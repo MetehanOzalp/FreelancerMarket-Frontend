@@ -68,6 +68,9 @@
 
 .card-img-top {
   border-radius: 10px;
+  padding: 50px;
+  margin-top: -30px;
+  margin-bottom: -55px;
 }
 
 .bi-arrow-right {
@@ -89,8 +92,25 @@
 }
 
 .btn-primary {
-  background-color: #201a3d;
   color: #fff;
-  border-color: #201a3d;
   border-radius: 10px;
+  border-color: #201a3d;
+  background-color: #201a3d;
+}
+
+.btn-outline-primary {
+  color: #201a3d;
+  border-radius: 10px;
+  border-color: #201a3d;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  border-radius: 10px;
+  border-color: #201a3d;
+  background-color: #201a3d;
+}
+
+.spinner-border {
+  color: #e83c5f;
 }

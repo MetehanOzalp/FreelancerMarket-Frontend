@@ -80,6 +80,10 @@
   height: 212px;
 }
 
+.spinner-border {
+  color: #e83c5f;
+}
+
 .row > * {
   padding-left: 0px;
   padding-right: 0px;

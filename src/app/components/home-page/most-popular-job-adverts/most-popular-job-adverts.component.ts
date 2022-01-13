@@ -36,10 +36,12 @@ export class MostPopularJobAdvertsComponent implements OnInit {
       }
     }
   }
+  dataLoaded: Boolean = false;
 
   constructor(private advertService: AdvertService) {}
 
   ngOnInit(): void {
+    this.dataLoaded = false;
     this.getMostPopularJobAdverts();
   }
 
@@ -49,6 +51,7 @@ export class MostPopularJobAdvertsComponent implements OnInit {
       while (this.mostPopularJobAdverts.length < 12) {
         this.mostPopularJobAdverts.push(response.data[0]);
       }
+      this.dataLoaded = true;
       this.totalCards = this.mostPopularJobAdverts.length;
       this.cardsPerPage = this.getCardsPerPage();
       this.initializeSlider();

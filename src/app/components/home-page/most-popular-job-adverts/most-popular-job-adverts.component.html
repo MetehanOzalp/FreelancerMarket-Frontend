@@ -13,6 +13,11 @@
   </div>
   <div class="cards" [ngClass]="{ 'w-100': totalPages === 1 }">
     <h3 class="title">İlgi çekici <b>İlanlar</b></h3>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status" *ngIf="!dataLoaded">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <div
       class="overflow"
       [ngStyle]="{ width: overflowWidth, left: pagePosition }"
@@ -56,12 +61,12 @@
                   </h6>
                 </div>
                 <div class="ms-auto p-2 bd-highlight">
-                  <p class="price">250TL</p>
+                  <p class="price">{{ advert.price }}TL</p>
                 </div>
               </div>
             </li>
             <li class="list-group-item">
-              <h6 class="card-text">{{ advert.title }}</h6>
+              <h6 class="card-text card-description">{{ advert.title }}</h6>
             </li>
             <li class="list-group-item">
               <p class="card-text">

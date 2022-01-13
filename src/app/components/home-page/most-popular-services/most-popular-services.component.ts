@@ -36,10 +36,12 @@ export class MostPopularServicesComponent implements OnInit {
       }
     }
   }
+  dataLoaded: Boolean = false;
 
   constructor(private subCategoryService: SubCategoryService) {}
 
   ngOnInit(): void {
+    this.dataLoaded = false;
     this.getMostPopularSubCategories();
   }
 
@@ -48,6 +50,7 @@ export class MostPopularServicesComponent implements OnInit {
       .getMostPopularSubCategories()
       .subscribe((response) => {
         this.mostPopularSubCategories = response.data;
+        this.dataLoaded = true;
         this.totalCards = this.mostPopularSubCategories.length;
         this.cardsPerPage = this.getCardsPerPage();
         this.initializeSlider();

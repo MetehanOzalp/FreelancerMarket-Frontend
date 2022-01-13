@@ -9,6 +9,11 @@
   <div class="row">
     <div class="col-md-3">
       <div class="categories-side-bar">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status" *ngIf="!dataLoaded">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
         <div class="link" *ngFor="let subCategory of subCategories">
           <div class="text" routerLink="/sub-categories/{{ subCategory.name }}">
             {{ subCategory.name }}
@@ -18,6 +23,11 @@
     </div>
     <div class="col-md-9">
       <div style="margin-left: 50px; margin-bottom: 1rem" class="row">
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status" *ngIf="!dataLoaded">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
         <div
           class="card shadow"
           style="width: 18rem"

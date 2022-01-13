@@ -1,3 +1,4 @@
+import { AdvertSearchFilter } from './../models/advertSearchFilter';
 import { AdvertFilter } from '../models/advertFilter';
 import { ListResponseModel } from './../models/listResponseModel';
 import { Advert } from './../models/advert';
@@ -30,6 +31,14 @@ export class AdvertService {
       pageNumber +
       '&subCategoryName=' +
       encodeURIComponent(subCategoryName);
+    return this.httpClient.post<ListResponseModel<Advert>>(newPath, filter);
+  }
+
+  getByPageNumberAndSearchFilter(
+    pageNumber: number,
+    filter: AdvertSearchFilter
+  ): Observable<ListResponseModel<Advert>> {
+    let newPath = this.apiUrl + '/getBySearchFilter?pageNumber=' + pageNumber;
     return this.httpClient.post<ListResponseModel<Advert>>(newPath, filter);
   }
 }

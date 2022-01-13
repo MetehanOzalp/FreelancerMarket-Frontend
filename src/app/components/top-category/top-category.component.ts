@@ -1,5 +1,4 @@
 import { SubCategoryService } from './../../services/sub-category.service';
-import { TopCategoryService } from './../../services/top-category.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SubCategory } from 'src/app/models/subCategory';
@@ -12,6 +11,7 @@ import { SubCategory } from 'src/app/models/subCategory';
 export class TopCategoryComponent implements OnInit {
   topCategoryName: string;
   subCategories: SubCategory[];
+  dataLoaded: Boolean = false;
 
   constructor(
     private subCategoryService: SubCategoryService,
@@ -22,10 +22,28 @@ export class TopCategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.dataLoaded = false;
     this.activatedRoute.params.subscribe((params) => {
-      this.topCategoryName = params['top-category-name'];
+      this.topCategoryName = params['top-category-name'].replace(/-/g, ' ');
+      this.formatTheTopCategoryName();
     });
     this.getSubCategoriesByTopCategoryName();
+  }
+
+  formatTheTopCategoryName() {
+    if (this.topCategoryName) {
+      this.topCategoryName = this.topCategoryName
+        .toLowerCase()
+        .split(' ')
+        .map(function (i: any) {
+          if (i.length > 2) {
+            return i.charAt(0).toUpperCase() + i.substr(1);
+          } else {
+            return i;
+          }
+        })
+        .join(' ');
+    }
   }
 
   getSubCategoriesByTopCategoryName() {
@@ -33,6 +51,7 @@ export class TopCategoryComponent implements OnInit {
       .getSubCategoriesByTopCategoryName(this.topCategoryName)
       .subscribe((response) => {
         this.subCategories = response.data;
+        this.dataLoaded = true;
       });
   }
 }

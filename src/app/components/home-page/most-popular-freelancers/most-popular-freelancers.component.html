@@ -13,6 +13,11 @@
   </div>
   <div class="cards" [ngClass]="{ 'w-100': totalPages === 1 }">
     <h3 class="title">En sevilen <b>Freelancer'lar</b></h3>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status" *ngIf="!dataLoaded">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
     <div
       class="overflow"
       [ngStyle]="{ width: overflowWidth, left: pagePosition }"
@@ -32,7 +37,9 @@
         <div class="card-body">
           <h5 class="card-title text-center">{{ freelancer.userName }}</h5>
           <p class="card-text">123 Tamamlanan Sipariş</p>
-          <a href="#" class="btn btn-primary d-flex justify-content-center"
+          <a
+            href="#"
+            class="btn btn-outline-primary d-flex justify-content-center"
             >Profile Git</a
           >
         </div>

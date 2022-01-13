@@ -1,3 +1,4 @@
+import { SearchComponent } from './components/search/search.component';
 import { SubCategoryComponent } from './components/sub-category/sub-category.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NgModule } from '@angular/core';
@@ -20,6 +21,11 @@ const routes: Routes = [
     path: 'sub-categories/:sub-category-name/:filter',
     pathMatch: 'full',
     component: SubCategoryComponent,
+  },
+  {
+    path: 'search/:filter',
+    pathMatch: 'full',
+    component: SearchComponent,
   },
 ];
 

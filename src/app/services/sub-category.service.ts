@@ -1,3 +1,4 @@
+import { SingleResponseModel } from './../models/singleResponseModel';
 import { SubCategory } from './../models/subCategory';
 import { ListResponseModel } from './../models/listResponseModel';
 import { environment } from './../../environments/environment.prod';
@@ -16,6 +17,13 @@ export class SubCategoryService {
   getSubCategories(): Observable<ListResponseModel<SubCategory>> {
     let newPath = this.apiUrl + '/getAll';
     return this.httpClient.get<ListResponseModel<SubCategory>>(newPath);
+  }
+
+  getNameOfSubCategory(
+    name: string
+  ): Observable<SingleResponseModel<SubCategory>> {
+    let newPath = this.apiUrl + '/getByName?name=' + encodeURIComponent(name);
+    return this.httpClient.get<SingleResponseModel<SubCategory>>(newPath);
   }
 
   getSubCategoriesByTopCategoryName(

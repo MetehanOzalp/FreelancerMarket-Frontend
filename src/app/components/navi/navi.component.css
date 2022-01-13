@@ -25,3 +25,24 @@
     margin-top: 0;
   }
 }
+
+.input-field {
+  padding-left: 45px;
+}
+
+.bi-search {
+  padding-top: 3px;
+  color: black;
+  min-width: 50px;
+  margin-left: 10px;
+  font-size: 1.5rem;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}

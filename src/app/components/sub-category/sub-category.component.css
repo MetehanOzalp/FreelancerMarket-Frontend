@@ -136,15 +136,30 @@
   color: #e83c5f;
   font-size: 22px;
   font-weight: bold;
-  margin-top: -10px;
+  margin-top: -20px;
   margin-left: -50px;
   position: relative;
 }
 
 .card-description {
   min-height: 40px;
+  color: #2d3640;
 }
 
 .advert-count {
   margin-top: 20px;
+}
+
+.input {
+  max-width: 110px;
+  border-radius: 10px;
+}
+
+.inputs {
+  margin-top: 44.5px;
+  margin-bottom: 12.8px;
+}
+
+.spinner-border {
+  color: #e83c5f;
 }

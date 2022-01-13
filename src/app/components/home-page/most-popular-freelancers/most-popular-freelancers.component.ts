@@ -36,10 +36,12 @@ export class MostPopularFreelancersComponent implements OnInit {
       }
     }
   }
+  dataLoaded: Boolean = false;
 
   constructor(private freelancerService: FreelancerService) {}
 
   ngOnInit(): void {
+    this.dataLoaded = false;
     this.getMostPopularFreelancers();
   }
 
@@ -49,6 +51,7 @@ export class MostPopularFreelancersComponent implements OnInit {
       while (this.mostPopularFreelancers.length < 20) {
         this.mostPopularFreelancers.push(response.data[0]);
       }
+      this.dataLoaded = true;
       this.totalCards = this.mostPopularFreelancers.length;
       this.cardsPerPage = this.getCardsPerPage();
       this.initializeSlider();
