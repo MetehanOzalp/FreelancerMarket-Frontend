@@ -14,7 +14,15 @@ import { MostPopularServicesComponent } from './components/home-page/most-popula
 import { TopCategoryComponent } from './components/top-category/top-category.component';
 import { SubCategoryComponent } from './components/sub-category/sub-category.component';
 import { SearchComponent } from './components/search/search.component';
+import { RegisterComponent } from './components/register/register.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { LoginComponent } from './components/login/login.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +35,8 @@ import { SearchComponent } from './components/search/search.component';
     TopCategoryComponent,
     SubCategoryComponent,
     SearchComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +44,13 @@ import { SearchComponent } from './components/search/search.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,3 +1,5 @@
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { SearchComponent } from './components/search/search.component';
 import { SubCategoryComponent } from './components/sub-category/sub-category.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
@@ -26,6 +28,16 @@ const routes: Routes = [
     path: 'search/:filter',
     pathMatch: 'full',
     component: SearchComponent,
+  },
+  {
+    path: 'register',
+    pathMatch: 'full',
+    component: RegisterComponent,
+  },
+  {
+    path: 'login',
+    pathMatch: 'full',
+    component: LoginComponent,
   },
 ];
 

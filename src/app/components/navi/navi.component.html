@@ -18,7 +18,7 @@
       </a>
       <div class="col-2"></div>
       <div class="col-4">
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+        <form>
           <div class="input-icons">
             <i class="bi bi-search"></i>
             <input
@@ -36,10 +36,16 @@
       <div class="col-2"></div>
 
       <div class="text-end d-flex justify-content-end">
-        <button type="button" class="btn btn-outline-light me-2">
+        <button
+          type="button"
+          class="btn btn-outline-light me-2"
+          routerLink="/login"
+        >
           Giriş Yap
         </button>
-        <button type="button" class="btn btn-danger">Kayıt Ol</button>
+        <button type="button" class="btn btn-danger" routerLink="/register">
+          Kayıt Ol
+        </button>
       </div>
     </div>
   </div>
@@ -69,13 +75,13 @@
       <div class="col-4">
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <div class="input-icons">
-            <i class="bi bi-search"></i>
+            <i class="bi bi-search bi-search2"></i>
             <input
               type="search"
               (keydown.enter)="createFilter()"
               [(ngModel)]="filter.term"
               [ngModelOptions]="{ standalone: true }"
-              class="form-control form-control-dark search-input-logout"
+              class="form-control form-control-dark search-input-logout input-field2"
               placeholder="Arama Yap..."
               aria-label="Search"
             />
@@ -84,7 +90,10 @@
       </div>
       <div class="col-1"></div>
 
-      <ul class="nav col-12 col-lg-auto mb-2 mb-md-0">
+      <ul
+        class="nav col-12 col-lg-auto mb-2 mb-md-0"
+        style="margin-left: 81px; margin-top: -15px"
+      >
         <li>
           <a href="#" class="nav-link px-2 text-white"
             ><i
@@ -105,7 +114,10 @@
         </li>
       </ul>
 
-      <div class="dropdown text-end">
+      <div
+        class="dropdown text-end"
+        style="margin-left: 5px; margin-top: -15px"
+      >
         <a
           href="#"
           class="d-block link-dark text-decoration-none dropdown-toggle text-white mt-2"
@@ -114,18 +126,18 @@
           aria-expanded="false"
         >
           <img
-            src="https://github.com/mdo.png"
+            src="{{ user.imagePath }}"
             alt="mdo"
             width="40"
             height="40"
             class="rounded-circle"
-          />Metehan Özalp
+          />{{ user.name }} {{ user.surName }}
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
           <li><a class="dropdown-item" href="#">Profilim</a></li>
           <li><a class="dropdown-item" href="#">Hesabım</a></li>
           <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+          <li><a class="dropdown-item" (click)="logout()">Çıkış Yap</a></li>
         </ul>
       </div>
     </div>

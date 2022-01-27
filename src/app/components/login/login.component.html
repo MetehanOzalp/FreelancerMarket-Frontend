@@ -1,0 +1,65 @@
+<div class="container shadow">
+  <div class="text-center">
+    <img
+      src="../../../assets/images/logo-svg/icon-kirmizi.svg"
+      class="rounded"
+      width="200px"
+      height="200px"
+      alt="..."
+    />
+  </div>
+  <div class="wrapper">
+    <div class="container">
+      <div class="tabs">
+        <input
+          type="radio"
+          class="tabs__button"
+          name="signForm"
+          id="signIn"
+          checked
+        />
+        <label class="tabs__text text-left" for="signIn"></label>
+        <div class="tabs__content">
+          <h4 class="text-center" style="margin-top: 10px; margin-bottom: 20px">
+            Giriş Ekranı
+          </h4>
+          <form class="form" [formGroup]="loginForm">
+            <div class="input-group">
+              <input
+                formControlName="userName"
+                class="input-group__input shadow"
+                type="text"
+                placeholder="&nbsp;"
+                name="userName"
+                id="userName"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="userName"
+                >Kullanıcı adı</label
+              >
+            </div>
+
+            <div class="input-group">
+              <input
+                formControlName="password"
+                class="input-group__input shadow"
+                type="password"
+                name="password"
+                placeholder="&nbsp;"
+                id="password"
+                required
+              />
+              <label class="input-group__label" for="password">Parola</label>
+            </div>
+            <div class="flex-space-between">
+              <label class="flex-align-right"></label>
+              <p><a href="#">Parolanızı mı unuttunuz?</a></p>
+            </div>
+            <button type="submit" (click)="login()">Giriş Yap</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,320 @@
+<div class="container shadow">
+  <div class="text-center">
+    <img
+      src="../../../assets/images/logo-svg/icon-kirmizi.svg"
+      class="rounded"
+      width="200px"
+      height="200px"
+      alt="..."
+    />
+  </div>
+  <div class="wrapper">
+    <div class="container">
+      <div class="tabs">
+        <!-- Freelancer-Form -->
+        <input
+          type="radio"
+          class="tabs__button"
+          name="signForm"
+          id="signIn"
+          checked
+        />
+        <label class="tabs__text text-left shadow" for="signIn"
+          >Freelancer</label
+        >
+        <div class="tabs__content">
+          <h4
+            class="text-center"
+            style="margin-top: -20px; margin-bottom: 20px"
+          >
+            Freelancer Kayıt
+          </h4>
+          <form class="form" [formGroup]="freelancerRegisterForm">
+            <div class="input-group">
+              <input
+                formControlName="name"
+                class="input-group__input shadow"
+                type="text"
+                placeholder="&nbsp;"
+                name="f-firstname"
+                id="f-firstname"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="f-firstname">İsim</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  freelancerRegisterForm.controls['name']?.errors &&
+                  freelancerRegisterForm.controls['name']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!freelancerRegisterForm.controls['name']?.errors"
+              ></i>
+            </div>
+            <div class="input-group">
+              <input
+                formControlName="surname"
+                class="input-group__input shadow"
+                type="text"
+                placeholder="&nbsp;"
+                name="f-lastname"
+                id="f-lastname"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="f-lastname">Soyisim</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  freelancerRegisterForm.controls['surname']?.errors &&
+                  freelancerRegisterForm.controls['surname']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!freelancerRegisterForm.controls['surname']?.errors"
+              ></i>
+            </div>
+            <div class="input-group">
+              <input
+                formControlName="userName"
+                class="input-group__input shadow"
+                type="text"
+                placeholder="&nbsp;"
+                name="f-username"
+                id="f-username"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="f-username"
+                >Kullanıcı adı</label
+              >
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  freelancerRegisterForm.controls['userName']?.errors &&
+                  freelancerRegisterForm.controls['userName']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!freelancerRegisterForm.controls['userName']?.errors"
+              ></i>
+            </div>
+            <div class="input-group">
+              <input
+                formControlName="email"
+                class="input-group__input shadow"
+                type="mail"
+                placeholder="&nbsp;"
+                name="f-email"
+                id="f-email"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="f-email">E-mail</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  freelancerRegisterForm.controls['email']?.errors &&
+                  freelancerRegisterForm.controls['email']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!freelancerRegisterForm.controls['email']?.errors"
+              ></i>
+            </div>
+            <div class="input-group">
+              <input
+                formControlName="password"
+                class="input-group__input shadow"
+                type="password"
+                name="f-password"
+                placeholder="&nbsp;"
+                id="f-password"
+                required
+              />
+              <label class="input-group__label" for="f-password">Parola</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  freelancerRegisterForm.controls['password']?.errors &&
+                  freelancerRegisterForm.controls['password']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!freelancerRegisterForm.controls['password']?.errors"
+              ></i>
+            </div>
+            <div class="flex-space-between">
+              <label class="flex-align-center"
+                ><input type="checkbox" />Beni hatırla</label
+              >
+              <p><a href="#">Parolanızı mı unuttunuz?</a></p>
+            </div>
+            <button
+              type="submit"
+              [disabled]="!freelancerRegisterForm.valid"
+              (click)="registerForFreelancer()"
+            >
+              Kayıt Ol
+            </button>
+          </form>
+        </div>
+        <!-- Employer-Form -->
+        <input type="radio" class="tabs__button" name="signForm" id="signUp" />
+        <label class="tabs__text text-right shadow" for="signUp">İşveren</label>
+        <div class="tabs__content">
+          <h4
+            class="text-center"
+            style="margin-top: -20px; margin-bottom: 20px"
+          >
+            İşveren Kayıt
+          </h4>
+          <form class="form" [formGroup]="employerRegisterForm">
+            <div class="input-group">
+              <input
+                formControlName="name"
+                class="input-group__input shadow"
+                type="text"
+                placeholder="&nbsp;"
+                name="e-firstname"
+                id="e-firstname"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="e-firstname">İsim</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  employerRegisterForm.controls['name']?.errors &&
+                  employerRegisterForm.controls['name']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!employerRegisterForm.controls['name']?.errors"
+              ></i>
+            </div>
+            <div class="input-group">
+              <input
+                formControlName="surname"
+                class="input-group__input shadow"
+                type="text"
+                placeholder="&nbsp;"
+                name="e-lastname"
+                id="e-lastname"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="e-lastname">Soyisim</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  employerRegisterForm.controls['surname']?.errors &&
+                  employerRegisterForm.controls['surname']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!employerRegisterForm.controls['surname']?.errors"
+              ></i>
+            </div>
+            <div class="input-group">
+              <input
+                formControlName="userName"
+                class="input-group__input shadow"
+                type="text"
+                placeholder="&nbsp;"
+                name="e-username"
+                id="e-username"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="e-username"
+                >Kullanıcı adı</label
+              >
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  employerRegisterForm.controls['userName']?.errors &&
+                  employerRegisterForm.controls['userName']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!employerRegisterForm.controls['userName']?.errors"
+              ></i>
+            </div>
+            <div class="input-group">
+              <input
+                formControlName="email"
+                class="input-group__input shadow"
+                type="mail"
+                placeholder="&nbsp;"
+                name="e-email"
+                id="e-email"
+                autocomplete="off"
+                required
+              />
+              <label class="input-group__label" for="e-email">E-mail</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  employerRegisterForm.controls['email']?.errors &&
+                  employerRegisterForm.controls['email']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!employerRegisterForm.controls['email']?.errors"
+              ></i>
+            </div>
+            <div class="input-group">
+              <input
+                formControlName="password"
+                class="input-group__input shadow"
+                type="password"
+                name="e-password"
+                placeholder="&nbsp;"
+                id="e-password"
+                required
+              />
+              <label class="input-group__label" for="e-password">Parola</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  employerRegisterForm.controls['password']?.errors &&
+                  employerRegisterForm.controls['password']?.touched
+                "
+              ></i>
+              <i
+                class="bi bi-check"
+                *ngIf="!employerRegisterForm.controls['password']?.errors"
+              ></i>
+            </div>
+            <div class="flex-space-between">
+              <label class="flex-align-center"
+                ><input type="checkbox" />Beni hatırla</label
+              >
+              <p><a href="#">Parolanızı mı unuttunuz?</a></p>
+            </div>
+            <button
+              type="submit"
+              type="reset"
+              [disabled]="!employerRegisterForm.valid"
+              (click)="registerForEmployer()"
+            >
+              Kayıt Ol
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

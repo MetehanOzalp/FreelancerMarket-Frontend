@@ -30,11 +30,26 @@
   padding-left: 45px;
 }
 
+.input-field2 {
+  padding-left: 45px;
+  margin-left: 108px;
+  margin-top: -1px;
+  width: 432px;
+}
+
 .bi-search {
   padding-top: 3px;
   color: black;
   min-width: 50px;
   margin-left: 10px;
+  font-size: 1.5rem;
+}
+
+.bi-search2 {
+  padding-top: 3px;
+  color: black;
+  min-width: 50px;
+  margin-left: 118px;
   font-size: 1.5rem;
 }
 
@@ -45,4 +60,8 @@
 .input-icons {
   width: 100%;
   margin-bottom: 10px;
+}
+
+.dropdown-item {
+  cursor: pointer;
 }

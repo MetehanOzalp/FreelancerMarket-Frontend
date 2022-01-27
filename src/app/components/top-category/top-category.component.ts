@@ -54,4 +54,8 @@ export class TopCategoryComponent implements OnInit {
         this.dataLoaded = true;
       });
   }
+
+  getUrl(param: string) {
+    return param.replace(/ /g, '-').toLocaleLowerCase('tr-TR');
+  }
 }

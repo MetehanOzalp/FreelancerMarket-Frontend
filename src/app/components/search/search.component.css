@@ -162,6 +162,7 @@
 
 .form-select {
   border-radius: 10px;
+  min-width: 190px;
 }
 
 .item {

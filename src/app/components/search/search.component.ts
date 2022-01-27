@@ -16,6 +16,7 @@ export class SearchComponent implements OnInit {
   filter: AdvertSearchFilter = {};
   dataLoaded: Boolean = false;
   didCategoriesCome: Boolean = false;
+  term: string;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,8 +28,10 @@ export class SearchComponent implements OnInit {
     this.dataLoaded = false;
     this.activatedRoute.params.subscribe((params) => {
       if (params['filter']) {
+        if (JSON.parse(params['filter']).term != this.filter.term) {
+          this.subCategories = [];
+        }
         this.filter = JSON.parse(params['filter']);
-        this.subCategories = [];
         this.didCategoriesCome = false;
         this.getByPageNumberAndSearchFilter();
       }

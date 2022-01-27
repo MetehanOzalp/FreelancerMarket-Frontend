@@ -15,7 +15,10 @@
           </div>
         </div>
         <div class="link" *ngFor="let subCategory of subCategories">
-          <div class="text" routerLink="/sub-categories/{{ subCategory.name }}">
+          <div
+            class="text"
+            routerLink="/sub-categories/{{ getUrl(subCategory.name) }}"
+          >
             {{ subCategory.name }}
           </div>
         </div>
@@ -32,7 +35,7 @@
           class="card shadow"
           style="width: 18rem"
           *ngFor="let subCategory of subCategories; let index = index"
-          routerLink="/sub-categories/{{ subCategory.name }}"
+          routerLink="/sub-categories/{{ getUrl(subCategory.name) }}"
         >
           <img
             src="{{ subCategory.imagePath }}"
