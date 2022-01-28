@@ -63,28 +63,13 @@
 
 .card {
   border-radius: 10px;
-  display: inline-block;
-  margin-right: 10px;
-  margin-left: 10px;
-  position: relative;
-  margin-bottom: 40px;
   cursor: pointer;
-}
-
-.card-text {
-  margin-top: -15px;
 }
 
 .card-img-top {
   border-radius: 10px 10px 0px 0px;
-  height: 212px;
 }
 
 .spinner-border {
   color: #e83c5f;
-}
-
-.row > * {
-  padding-left: 0px;
-  padding-right: 0px;
 }

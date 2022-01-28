@@ -12,7 +12,6 @@ export interface Freelancer extends User {
   wallet: Wallet;
   walletTransactions: WalletTransaction[];
   operationClaims: OperationClaim[];
-  favorities: Favorite[];
   skills: Skill[];
   freelancerComments: FreelancerComment[];
 }

@@ -1,0 +1,25 @@
+.add-icon {
+  font-size: 18px;
+  text-decoration: none;
+  color: #201a3d;
+  cursor: pointer;
+  display: flex;
+  float: left;
+}
+
+.add-icon:hover {
+  text-decoration: none;
+  color: #e83c5f;
+}
+
+.delete-icon {
+  font-size: 18px;
+  text-decoration: none;
+  color: #e83c5f;
+  cursor: pointer;
+  display: flex;
+}
+
+.text {
+  margin-top: 9px;
+}

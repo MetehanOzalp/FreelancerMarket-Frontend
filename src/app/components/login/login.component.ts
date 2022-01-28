@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       this.authService.login(loginModel).subscribe(
         (response) => {
           localStorage.setItem('token', response.data.jwtToken);
+          window.location.href = '/';
           this.toastrService.success('Giriş yapıldı', 'Başarılı');
         },
         (responseError) => {
