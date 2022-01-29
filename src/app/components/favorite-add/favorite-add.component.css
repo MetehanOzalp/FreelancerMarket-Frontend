@@ -1,7 +1,7 @@
 .add-icon {
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: none;
-  color: #201a3d;
+  color: #2d3640;
   cursor: pointer;
   display: flex;
   float: left;
@@ -13,7 +13,7 @@
 }
 
 .delete-icon {
-  font-size: 18px;
+  font-size: 16px;
   text-decoration: none;
   color: #e83c5f;
   cursor: pointer;

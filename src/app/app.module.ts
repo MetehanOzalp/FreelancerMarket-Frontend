@@ -21,6 +21,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './components/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FavoriteAddComponent } from './components/favorite-add/favorite-add.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -40,6 +41,7 @@ export function tokenGetter() {
     RegisterComponent,
     LoginComponent,
     FavoriteAddComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,

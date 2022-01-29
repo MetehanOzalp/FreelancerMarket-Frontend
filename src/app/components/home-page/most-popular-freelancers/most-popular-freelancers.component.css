@@ -114,3 +114,15 @@
 .spinner-border {
   color: #e83c5f;
 }
+
+.username {
+  font-size: 16px;
+  color: #2d3640;
+}
+
+.order {
+  color: #2d3640;
+  font-size: 12px;
+  font-weight: 400;
+  text-align: center;
+}

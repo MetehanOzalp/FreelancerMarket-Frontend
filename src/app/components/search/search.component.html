@@ -27,6 +27,7 @@
           class="form-control input"
           id="autoSizingInput"
           placeholder="Min. Fiyat"
+          autocomplete="off"
         />
       </div>
       <div class="col-auto">
@@ -39,6 +40,7 @@
           class="form-control input"
           id="autoSizingInput"
           placeholder="Maks. Fiyat"
+          autocomplete="off"
         />
       </div>
       <div class="col-auto">
@@ -57,57 +59,8 @@
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
-  <div
-    class="card shadow"
-    style="width: 18rem"
-    *ngFor="let advert of adverts; let index = index"
-  >
-    <img
-      src="{{ advert.imagePath }}"
-      height="175px"
-      class="card-img-top"
-      alt="..."
-    />
-    <div class="card-body">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">
-          <div class="d-flex bd-highlight">
-            <div class="p-2 bd-highlight">
-              <h6 class="card-title">
-                <a
-                  href="#"
-                  class="d-block link-dark text-decoration-none"
-                  aria-expanded="false"
-                >
-                  <img
-                    src="https://github.com/mdo.png"
-                    alt="mdo"
-                    width="40"
-                    height="40"
-                    style="margin-top: 15px"
-                    class="rounded-circle"
-                  />
-                  {{ advert.freelancer.userName }}
-                </a>
-              </h6>
-              <h6 class="card-subtitle text-muted">
-                {{ advert.freelancer.appellation }}
-              </h6>
-            </div>
-            <div class="ms-auto p-2 bd-highlight">
-              <p class="price">{{ advert.price }}TL</p>
-            </div>
-          </div>
-        </li>
-        <li class="list-group-item">
-          <h6 class="card-description card-text">{{ advert.title }}</h6>
-        </li>
-        <li class="list-group-item">
-          <p class="card-text">
-            <app-favorite-add [advertId]="advert.id"></app-favorite-add>
-          </p>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <app-product-card
+    *ngFor="let advert of adverts"
+    [advert]="advert"
+  ></app-product-card>
 </div>
