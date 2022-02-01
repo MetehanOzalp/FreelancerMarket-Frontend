@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
           this.toastrService.success('Giriş yapıldı', 'Başarılı');
         },
         (responseError) => {
-          console.log(responseError);
           this.toastrService.error(responseError.error.message, 'Hata');
         }
       );

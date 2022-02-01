@@ -22,6 +22,8 @@ import { LoginComponent } from './components/login/login.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FavoriteAddComponent } from './components/favorite-add/favorite-add.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { FreelancerDetailComponent } from './components/freelancer-detail/freelancer-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -42,6 +44,8 @@ export function tokenGetter() {
     LoginComponent,
     FavoriteAddComponent,
     ProductCardComponent,
+    UserDetailComponent,
+    FreelancerDetailComponent,
   ],
   imports: [
     BrowserModule,

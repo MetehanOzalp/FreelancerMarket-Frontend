@@ -1,0 +1,157 @@
+<div class="container">
+  <div class="main-body">
+    <div class="row gutters-sm">
+      <div class="col-md-4 mb-3">
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="d-flex flex-column align-items-center text-center">
+              <img
+                src="{{ freelancer.imagePath }}"
+                alt="freelancer"
+                class="rounded-circle"
+                width="150"
+              />
+              <div class="mt-3">
+                <h4>{{ freelancer.name }} {{ freelancer.surName }}</h4>
+                <p class="text-secondary appellation mb-1">
+                  {{ freelancer.appellation }}
+                </p>
+                <button>Mesaj Gönder</button>
+              </div>
+            </div>
+            <div class="mt-3">
+              <ul class="list-group list-group-flush">
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">
+                    <i class="bi bi-arrow-repeat"></i>Tamamlanan Sipariş
+                  </h6>
+                  <span class="text-secondary">12</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">
+                    <i class="bi bi-box-seam"></i>Son İş Teslimi
+                  </h6>
+                  <span class="text-secondary">1 gün önce</span>
+                </li>
+                <li
+                  class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                >
+                  <h6 class="mb-0">
+                    <i class="bi bi-person-square"></i>Üyelik Tarihi
+                  </h6>
+                  <span class="text-secondary">Temmuz 2021</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow mt-4">
+          <div class="card-body">
+            <h5 class="about">
+              <span style="color: #e83c5f">{{ freelancer.userName }}</span>
+              Hakkında
+            </h5>
+            <div class="mt-3 about-section">
+              <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer took a galley
+                of type and scrambled it to make a type specimen book. It has
+                survived not only five centuries, but also the leap into
+                electronic typesetting, remaining essentially unchanged. It was
+                popularised in the 1960s with the release of Letraset sheets
+                containing Lorem Ipsum passages, and more recently with desktop
+                publishing software like Aldus PageMaker including versions of
+                Lorem Ipsum.
+              </p>
+            </div>
+            <hr class="divider mt-4 mb-4" />
+            <h5 class="skill">Uzman Olduğu Alanlar & Araçlar</h5>
+            <div class="mt-4 about-section">
+              <div class="skills-container bd-grid">
+                <div>
+                  <div class="skills-data">
+                    <div class="skills-names">
+                      <span class="skills-name">Yetenek 1</span>
+                    </div>
+                  </div>
+                  <div class="skills-data">
+                    <div class="skills-names">
+                      <span class="skills-name">Yetenek 2</span>
+                    </div>
+                  </div>
+                  <div class="skills-data">
+                    <div class="skills-names">
+                      <span class="skills-name">Yetenek 3</span>
+                    </div>
+                  </div>
+                  <div class="skills-data">
+                    <div class="skills-names">
+                      <span class="skills-name">Yetenek 4</span>
+                    </div>
+                  </div>
+                  <div class="skills-data">
+                    <div class="skills-names">
+                      <span class="skills-name">Yetenek 5</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card shadow mb-3">
+          <div class="card-body">
+            <h5 class="services mt-3">
+              <span style="color: #e83c5f">{{ freelancer.userName }}</span>
+              Kullanıcısının Verdiği Hizmetler
+            </h5>
+            <div class="d-flex justify-content-center">
+              <app-product-card
+                *ngFor="let advert of adverts"
+                [advert]="advert"
+              ></app-product-card>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow mt-4 mb-3">
+          <div class="card-body">
+            <h5 class="comments mt-3">Tüm Değerlendirmeler</h5>
+            <div class="row">
+              <div
+                class="headings d-flex justify-content-between align-items-center mb-3"
+              ></div>
+              <div class="card p-3">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="user d-flex flex-row align-items-center">
+                    <img
+                      src="https://i.imgur.com/hczKIze.jpg"
+                      width="50"
+                      class="user-img rounded-circle mr-2"
+                    />
+                    <div>
+                      <p class="font-weight-bold text-title">mozalp</p>
+                      <br />
+                      <small class="font-weight-bold text-subtitle"
+                        >Lorem Ipsum is simply dummy text of the printing and
+                        typesetting industry.</small
+                      >
+                    </div>
+                  </div>
+                  <small class="day-ago">2 days ago</small>
+                </div>
+                <hr class="divider" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

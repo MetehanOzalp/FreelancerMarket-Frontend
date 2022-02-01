@@ -15,6 +15,14 @@ export class AdvertService {
 
   constructor(private httpClient: HttpClient) {}
 
+  getByFreelancerId(
+    freelancerId: number
+  ): Observable<ListResponseModel<Advert>> {
+    let newPath =
+      this.apiUrl + '/getByFreelancerId?freelancerId=' + freelancerId;
+    return this.httpClient.get<ListResponseModel<Advert>>(newPath);
+  }
+
   getMostPopularJobAdverts(): Observable<ListResponseModel<Advert>> {
     let newPath = this.apiUrl + '/getMostPopularJobAdverts';
     return this.httpClient.get<ListResponseModel<Advert>>(newPath);

@@ -1,3 +1,4 @@
+import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { SearchComponent } from './components/search/search.component';
@@ -38,6 +39,11 @@ const routes: Routes = [
     path: 'login',
     pathMatch: 'full',
     component: LoginComponent,
+  },
+  {
+    path: 'users/:userName',
+    pathMatch: 'full',
+    component: UserDetailComponent,
   },
 ];
 

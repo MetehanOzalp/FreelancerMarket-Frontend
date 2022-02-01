@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status" *ngIf="!dataLoaded">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<app-freelancer-detail
+  *ngIf="isFreelancer"
+  [user]="user"
+></app-freelancer-detail>
