@@ -11,6 +11,7 @@ export interface User {
   email?: string;
   password?: string;
   imagePath?: string;
+  createdDate?: Date;
   wallet?: Wallet;
   walletTransactions?: WalletTransaction[];
   favorities?: Favorite[];

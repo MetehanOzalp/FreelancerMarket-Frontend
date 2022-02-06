@@ -1,3 +1,5 @@
+import { ToastrService } from 'ngx-toastr';
+import { FreelancerDetailComponent } from './../freelancer-detail/freelancer-detail.component';
 import { SubCategoryService } from './../../services/sub-category.service';
 import { AdvertService } from './../../services/advert.service';
 import { AdvertFilter } from '../../models/advertFilter';
@@ -20,6 +22,7 @@ export class SubCategoryComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private advertService: AdvertService,
     private subCategoryService: SubCategoryService,
+    private toastrService: ToastrService,
     private router: Router
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -32,16 +35,22 @@ export class SubCategoryComponent implements OnInit {
       if (params['sub-category-name'] && params['filter']) {
         this.filter = JSON.parse(params['filter']);
       }
-      this.getByPageNumberAndFilter();
     });
   }
 
   getNameOfSubCategory() {
     this.subCategoryService
       .getNameOfSubCategory(this.subCategoryName)
-      .subscribe((response) => {
-        this.subCategoryName = response.data.name;
-      });
+      .subscribe(
+        (response) => {
+          this.subCategoryName = response.data.name;
+          this.getByPageNumberAndFilter();
+        },
+        (responseError) => {
+          this.toastrService.warning(responseError.error.message, 'Dikkat');
+          this.router.navigate(['/']);
+        }
+      );
   }
 
   getByPageNumberAndFilter() {
@@ -70,7 +79,9 @@ export class SubCategoryComponent implements OnInit {
         this.filter.minPrice = undefined;
       }
       this.router.navigate([
-        'sub-categories/' + this.subCategoryName + '/',
+        'sub-categories/' +
+          this.subCategoryName.replace(/ /g, '-').toLocaleLowerCase('tr-TR') +
+          '/',
         JSON.stringify(this.filter),
       ]);
     }
@@ -78,7 +89,10 @@ export class SubCategoryComponent implements OnInit {
       this.filter.maxPrice == undefined &&
       this.filter.minPrice == undefined
     ) {
-      this.router.navigate(['sub-categories/' + this.subCategoryName]);
+      this.router.navigate([
+        'sub-categories/' +
+          this.subCategoryName.replace(/ /g, '-').toLocaleLowerCase('tr-TR'),
+      ]);
     }
   }
 }

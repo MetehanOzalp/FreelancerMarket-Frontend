@@ -1,3 +1,5 @@
+import { OrderService } from './../../services/order.service';
+import { Order } from './../../models/order';
 import { Advert } from './../../models/advert';
 import { AdvertService } from './../../services/advert.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -14,14 +16,17 @@ export class FreelancerDetailComponent implements OnInit {
   @Input() user: User;
   freelancer: Freelancer = {};
   adverts: Advert[] = [];
+  orders: Order[] = [];
 
   constructor(
+    private orderService: OrderService,
     private advertService: AdvertService,
     private toastrService: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.getAdvertByFreelancerId(this.user.id);
+    this.getAdvertsByFreelancerId(this.user.id);
+    this.getOrdersByFreelancerId(this.user.id);
     this.userMappingToFreelancer();
   }
 
@@ -30,7 +35,7 @@ export class FreelancerDetailComponent implements OnInit {
     this.freelancer = JSON.parse(object);
   }
 
-  getAdvertByFreelancerId(freelancerId: number) {
+  getAdvertsByFreelancerId(freelancerId: number) {
     this.advertService.getByFreelancerId(freelancerId).subscribe(
       (response) => {
         this.adverts = response.data;
@@ -39,5 +44,46 @@ export class FreelancerDetailComponent implements OnInit {
         this.toastrService.error(responseError.error.message, 'Hata');
       }
     );
+  }
+
+  getOrdersByFreelancerId(freelancerId: number) {
+    this.orderService.getByFreelancerId(freelancerId).subscribe(
+      (response) => {
+        this.orders = response.data;
+      },
+      (responseError) => {
+        this.toastrService.error(responseError.error.message, 'Hata');
+      }
+    );
+  }
+
+  getLastCompletedOrderDate() {
+    if (this.orders.length != 0) {
+      for (let index = 0; index < this.orders.length; index++) {
+        if (this.orders[index].status) {
+          return this.orders[index].createdDate;
+        }
+      }
+    }
+    return null;
+  }
+
+  getCreatedDate(date: Date) {
+    const months = [
+      'Ocak',
+      'Şubat',
+      'Mart',
+      'Nisan',
+      'Mayıs',
+      'Haziran',
+      'Temmuz',
+      'Ağustos',
+      'Eylül',
+      'Ekim',
+      'Kasım',
+      'Aralık',
+    ];
+    var newDate = new Date(date);
+    return months[newDate.getMonth()] + ' ' + newDate.getFullYear();
   }
 }

@@ -52,11 +52,7 @@ body {
 }
 
 .appellation {
-  margin-top: -20px;
-}
-
-.text-secondary {
-  line-height: 3;
+  margin-top: 5px;
 }
 
 button {
@@ -133,31 +129,21 @@ button:hover {
   color: #2d3640;
 }
 
-.text-title {
-  margin-top: 10px;
-  margin-left: 15px;
+.day-ago {
+  margin-top: -32px;
+  font-size: 15px;
+  color: #5e6b79;
+  font-weight: 500;
+  margin-left: 5px;
+}
+
+.commenter {
   color: #4b4f52;
   font-weight: 500;
 }
 
-.text-subtitle {
-  position: relative;
-  margin-top: -35px;
-  margin-left: 15px;
-  font-size: 16px;
-  float: left;
-  font-weight: 400;
-  word-break: break-word;
-  width: 632px;
-  font-size: 16px;
-  line-height: 1.63;
+.comment-content {
   color: #8b95a1;
-  text-align: left;
-}
-
-.day-ago {
-  margin-top: -30px;
-  font-size: 14px;
-  color: #5e6b79;
-  font-weight: 500;
+  float: left;
+  margin-top: 10px;
 }

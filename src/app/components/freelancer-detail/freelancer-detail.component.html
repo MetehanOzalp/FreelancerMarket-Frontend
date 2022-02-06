@@ -27,7 +27,7 @@
                   <h6 class="mb-0">
                     <i class="bi bi-arrow-repeat"></i>Tamamlanan Sipariş
                   </h6>
-                  <span class="text-secondary">12</span>
+                  <span class="text-secondary">{{ orders.length }}</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
@@ -35,7 +35,9 @@
                   <h6 class="mb-0">
                     <i class="bi bi-box-seam"></i>Son İş Teslimi
                   </h6>
-                  <span class="text-secondary">1 gün önce</span>
+                  <span class="text-secondary" *ngIf="orders[0]">{{
+                    getLastCompletedOrderDate() | dateAgo
+                  }}</span>
                 </li>
                 <li
                   class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
@@ -43,7 +45,9 @@
                   <h6 class="mb-0">
                     <i class="bi bi-person-square"></i>Üyelik Tarihi
                   </h6>
-                  <span class="text-secondary">Temmuz 2021</span>
+                  <span class="text-secondary">{{
+                    getCreatedDate(user.createdDate)
+                  }}</span>
                 </li>
               </ul>
             </div>
@@ -112,41 +116,44 @@
               <span style="color: #e83c5f">{{ freelancer.userName }}</span>
               Kullanıcısının Verdiği Hizmetler
             </h5>
-            <div class="d-flex justify-content-center">
-              <app-product-card
-                *ngFor="let advert of adverts"
-                [advert]="advert"
-              ></app-product-card>
-            </div>
+            <app-product-card
+              *ngFor="let advert of adverts"
+              [advert]="advert"
+            ></app-product-card>
           </div>
         </div>
         <div class="card shadow mt-4 mb-3">
           <div class="card-body">
             <h5 class="comments mt-3">Tüm Değerlendirmeler</h5>
             <div class="row">
-              <div
-                class="headings d-flex justify-content-between align-items-center mb-3"
-              ></div>
-              <div class="card p-3">
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="user d-flex flex-row align-items-center">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="d-flex flex-start">
                     <img
-                      src="https://i.imgur.com/hczKIze.jpg"
+                      class="rounded-circle shadow-1-strong me-3"
+                      src="{{ user.imagePath }}"
+                      alt="avatar"
                       width="50"
-                      class="user-img rounded-circle mr-2"
+                      height="50"
                     />
-                    <div>
-                      <p class="font-weight-bold text-title">mozalp</p>
-                      <br />
-                      <small class="font-weight-bold text-subtitle"
-                        >Lorem Ipsum is simply dummy text of the printing and
-                        typesetting industry.</small
+                    <div class="w-100">
+                      <div
+                        class="d-flex justify-content-between align-items-center mb-3"
                       >
+                        <h6 class="commenter fw-bold mb-0">
+                          mozalp
+                          <br />
+                          <span class="comment-content"
+                            >Lorem Ipsum is simply dummy text of the printing
+                            and typesetting industry.</span
+                          >
+                        </h6>
+                        <p class="day-ago mb-0">2 gün önce</p>
+                      </div>
                     </div>
                   </div>
-                  <small class="day-ago">2 days ago</small>
+                  <hr />
                 </div>
-                <hr class="divider" />
               </div>
             </div>
           </div>

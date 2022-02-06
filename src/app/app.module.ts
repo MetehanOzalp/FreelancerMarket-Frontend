@@ -24,6 +24,7 @@ import { FavoriteAddComponent } from './components/favorite-add/favorite-add.com
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { FreelancerDetailComponent } from './components/freelancer-detail/freelancer-detail.component';
+import { DateAgoPipe } from './pipes/date-ago.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -46,6 +47,7 @@ export function tokenGetter() {
     ProductCardComponent,
     UserDetailComponent,
     FreelancerDetailComponent,
+    DateAgoPipe,
   ],
   imports: [
     BrowserModule,
