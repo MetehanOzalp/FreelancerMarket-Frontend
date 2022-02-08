@@ -1,3 +1,4 @@
+import { ChangePasswordDto } from './../models/changePasswordDto';
 import { TokenModel } from './../models/tokenModel';
 import { SingleResponseModel } from './../models/singleResponseModel';
 import { UserForLoginDto } from './../models/userForLoginDto';
@@ -42,6 +43,13 @@ export class AuthService {
       newPath,
       userForLoginDto
     );
+  }
+
+  changePassword(
+    changePasswordDto: ChangePasswordDto
+  ): Observable<ResponseModel> {
+    let newPath = this.apiUrl + '/changePassword';
+    return this.httpClient.post<ResponseModel>(newPath, changePasswordDto);
   }
 
   isAuthenticated() {

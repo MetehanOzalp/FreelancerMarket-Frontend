@@ -1,3 +1,5 @@
+import { Advert } from './../models/advert';
+import { ListResponseModel } from './../models/listResponseModel';
 import { ResponseModel } from './../models/responseModel';
 import { Observable } from 'rxjs';
 import { FavoriteAddDto } from './../models/favoriteAddDto';
@@ -22,5 +24,10 @@ export class FavoriteService {
     let newPath =
       this.apiUrl + '/delete?userId=' + userId + '&advertId=' + advertId;
     return this.httpClient.delete<ResponseModel>(newPath);
+  }
+
+  getByUserId(userId: number): Observable<ListResponseModel<Advert>> {
+    let newPath = this.apiUrl + '/getByUserId?userId=' + userId;
+    return this.httpClient.get<ListResponseModel<Advert>>(newPath);
   }
 }

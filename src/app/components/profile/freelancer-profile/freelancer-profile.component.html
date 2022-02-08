@@ -1,0 +1,145 @@
+<div class="container-xl px-4 mt-4">
+  <div class="row">
+    <div class="col-xl-4">
+      <div class="card shadow mb-4 mb-xl-0">
+        <div class="card-header">Profil Resmi</div>
+        <div class="card-body text-center">
+          <img
+            class="img-account-profile rounded-circle mb-2"
+            src="{{ freelancer.imagePath }}"
+            alt=""
+          />
+          <h3 class="mb-1" for="inputUsername">
+            {{ freelancer.userName }}
+          </h3>
+          <div class="small font-italic text-muted mb-4">
+            Sadece 5 MB'den küçük JPG veya PNG yükleyiniz
+          </div>
+          <button class="btn btn-primary" type="button">Resmi Kaydet</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-8">
+      <div class="card shadow mb-4">
+        <div class="card-header">Hesap Detayları</div>
+        <div class="card-body">
+          <form [formGroup]="freelancerUpdateForm">
+            <div class="row gx-3 mb-3">
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input
+                    class="input-group__input"
+                    id="inputName"
+                    type="text"
+                    formControlName="name"
+                    placeholder="&nbsp;"
+                    [(ngModel)]="freelancer.name"
+                  />
+                  <label class="input-group__label" for="inputName">Ad</label>
+                  <i
+                    class="bi bi-x"
+                    *ngIf="
+                      freelancerUpdateForm.controls['name']?.errors &&
+                      freelancerUpdateForm.controls['name']?.touched
+                    "
+                  ></i>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input
+                    class="input-group__input"
+                    id="inputSurName"
+                    type="text"
+                    formControlName="surName"
+                    placeholder="&nbsp;"
+                    [(ngModel)]="freelancer.surName"
+                  />
+                  <label class="input-group__label" for="inputSurName"
+                    >Soyad</label
+                  >
+                  <i
+                    class="bi bi-x"
+                    *ngIf="
+                      freelancerUpdateForm.controls['surName']?.errors &&
+                      freelancerUpdateForm.controls['surName']?.touched
+                    "
+                  ></i>
+                </div>
+              </div>
+            </div>
+            <div class="row gx-3 mb-3">
+              <div class="col-md-8">
+                <div class="input-group">
+                  <input
+                    class="input-group__input"
+                    id="inputAppellation"
+                    type="text"
+                    formControlName="appellation"
+                    placeholder="&nbsp;"
+                    [(ngModel)]="freelancer.appellation"
+                  />
+                  <label class="input-group__label" for="inputAppellation"
+                    >Unvan</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row gx-3 mb-3">
+              <div class="col-md-8">
+                <div class="input-group">
+                  <input
+                    class="input-group__input"
+                    id="inputEmailAddress"
+                    type="email"
+                    formControlName="email"
+                    placeholder="&nbsp;"
+                    [(ngModel)]="freelancer.email"
+                  />
+                  <label class="input-group__label" for="inputEmailAddress"
+                    >Email</label
+                  >
+                  <i
+                    class="bi bi-x"
+                    *ngIf="
+                      freelancerUpdateForm.controls['email']?.errors &&
+                      freelancerUpdateForm.controls['email']?.touched
+                    "
+                  ></i>
+                </div>
+              </div>
+            </div>
+            <div class="row gx-3 mb-3">
+              <div class="col-md-12">
+                <div class="input-group">
+                  <textarea
+                    class="input-group__input"
+                    id="inputAbout"
+                    type="text"
+                    rows="10"
+                    style="height: 250px"
+                    formControlName="about"
+                    placeholder="&nbsp;"
+                    [(ngModel)]="freelancer.about"
+                  ></textarea>
+                  <label class="input-group__label" for="inputAbout"
+                    >Hakkında</label
+                  >
+                </div>
+              </div>
+              <hr class="mt-4" />
+            </div>
+            <button
+              class="btn btn-primary"
+              type="button"
+              [disabled]="!freelancerUpdateForm.valid"
+              (click)="update()"
+            >
+              Değişiklikleri Kaydet
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

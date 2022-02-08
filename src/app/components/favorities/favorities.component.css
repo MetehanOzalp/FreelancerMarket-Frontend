@@ -1,0 +1,15 @@
+.title {
+  font-size: 34px;
+  font-weight: 800;
+  margin-top: 40px;
+  color: #2d3640;
+}
+
+.custom-container {
+  border: solid;
+  border-color: #fff;
+  width: 100%;
+  min-height: 125px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}

@@ -1,0 +1,95 @@
+<div class="container shadow">
+  <div class="text-center">
+    <h3 class="header">Cüzdan Bilgileri</h3>
+  </div>
+  <div class="wrapper" style="margin-top: 20px">
+    <div class="container">
+      <div class="tabs">
+        <input
+          type="radio"
+          class="tabs__button"
+          name="signForm"
+          id="signIn"
+          checked
+        />
+        <label class="tabs__text text-left shadow" for="signIn">Cüzdanım</label>
+        <div class="tabs__content">
+          <h4
+            class="text-center"
+            style="margin-top: -20px; margin-bottom: 20px"
+          >
+            <div class="card balance shadow" *ngIf="user.wallet">
+              <div class="card-body">
+                <h1 class="card-title">
+                  {{ user.wallet.balance
+                  }}<span style="font-size: 28px"> TL</span>
+                  <h5 style="color: #201a3d">Toplam Bakiyen</h5>
+                </h1>
+              </div>
+            </div>
+          </h4>
+        </div>
+        <input type="radio" class="tabs__button" name="signForm" id="signUp" />
+        <label class="tabs__text text-right shadow" for="signUp"
+          >Cüzdan Hareketlerim</label
+        >
+        <div class="tabs__content">
+          <div class="card shadow" *ngIf="user.walletTransactions">
+            <div class="card-body">
+              <div class="row">
+                <div
+                  class="card"
+                  *ngFor="let walletTransaction of user.walletTransactions"
+                >
+                  <div class="card-body">
+                    <div class="d-flex flex-start">
+                      <div class="w-100">
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <h6 class="fw-bold mb-0">
+                            <i
+                              class="bi bi-arrow-down-square-fill"
+                              style="
+                                font-size: 1.5rem;
+                                color: #26ca9a;
+                                margin-right: 5px;
+                              "
+                              *ngIf="
+                                walletTransaction.transactionName ==
+                                'Gelen Para'
+                              "
+                            ></i>
+                            <i
+                              class="bi bi-arrow-up-square-fill"
+                              style="
+                                font-size: 1.5rem;
+                                color: #e83c5f;
+                                margin-right: 5px;
+                              "
+                              *ngIf="
+                                walletTransaction.transactionName ==
+                                'Giden Para'
+                              "
+                            ></i
+                            >{{ walletTransaction.transactionName }}
+                            <br />
+                            <span class="text-muted">{{
+                              walletTransaction.date
+                            }}</span>
+                          </h6>
+                          <h3>{{ walletTransaction.amount }} TL</h3>
+                        </div>
+                      </div>
+                    </div>
+                    <hr />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

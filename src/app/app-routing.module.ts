@@ -1,3 +1,8 @@
+import { ProfileSettingComponent } from './components/profile-setting/profile-setting.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { FavoritiesComponent } from './components/favorities/favorities.component';
+import { LoginGuard } from './guards/login.guard';
+import { WalletComponent } from './components/wallet/wallet.component';
 import { ExpiredTokenGuard } from './guards/expired-token.guard';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { LoginComponent } from './components/login/login.component';
@@ -57,6 +62,30 @@ const routes: Routes = [
     pathMatch: 'full',
     component: UserDetailComponent,
     canActivate: [ExpiredTokenGuard],
+  },
+  {
+    path: 'wallet',
+    pathMatch: 'full',
+    component: WalletComponent,
+    canActivate: [LoginGuard, ExpiredTokenGuard],
+  },
+  {
+    path: 'favorities',
+    pathMatch: 'full',
+    component: FavoritiesComponent,
+    canActivate: [LoginGuard, ExpiredTokenGuard],
+  },
+  {
+    path: 'profile',
+    pathMatch: 'full',
+    component: ProfileComponent,
+    canActivate: [LoginGuard, ExpiredTokenGuard],
+  },
+  {
+    path: 'profile/settings',
+    pathMatch: 'full',
+    component: ProfileSettingComponent,
+    canActivate: [LoginGuard, ExpiredTokenGuard],
   },
 ];
 

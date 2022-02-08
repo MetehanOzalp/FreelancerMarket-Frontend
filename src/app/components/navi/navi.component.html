@@ -134,8 +134,10 @@
           />{{ user.name }} {{ user.surName }}
         </a>
         <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-          <li><a class="dropdown-item" href="#">Profilim</a></li>
-          <li><a class="dropdown-item" href="#">Hesabım</a></li>
+          <li><a class="dropdown-item" routerLink="/profile">Profilim</a></li>
+          <li>
+            <a class="dropdown-item" routerLink="/profile/settings">Hesabım</a>
+          </li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" (click)="logout()">Çıkış Yap</a></li>
         </ul>

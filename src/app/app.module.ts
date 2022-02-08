@@ -25,6 +25,13 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { FreelancerDetailComponent } from './components/freelancer-detail/freelancer-detail.component';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
+import { WalletComponent } from './components/wallet/wallet.component';
+import { FavoritiesComponent } from './components/favorities/favorities.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EmployerProfileComponent } from './components/profile/employer-profile/employer-profile.component';
+import { FreelancerProfileComponent } from './components/profile/freelancer-profile/freelancer-profile.component';
+import { ProfileSettingComponent } from './components/profile-setting/profile-setting.component';
+import { ChangePasswordComponent } from './components/profile-setting/change-password/change-password.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -48,6 +55,13 @@ export function tokenGetter() {
     UserDetailComponent,
     FreelancerDetailComponent,
     DateAgoPipe,
+    WalletComponent,
+    FavoritiesComponent,
+    ProfileComponent,
+    EmployerProfileComponent,
+    FreelancerProfileComponent,
+    ProfileSettingComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

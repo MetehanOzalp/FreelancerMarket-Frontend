@@ -1,3 +1,5 @@
+import { ResponseModel } from './../models/responseModel';
+import { SingleResponseModel } from './../models/singleResponseModel';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from './../models/listResponseModel';
 import { HttpClient } from '@angular/common/http';
@@ -12,6 +14,14 @@ export class FreelancerService {
   apiUrl = `${environment.apiUrl}/freelancers`;
 
   constructor(private httpClient: HttpClient) {}
+
+  update(freelancer: Freelancer): Observable<ResponseModel> {
+    let newPath = this.apiUrl + '/update';
+    return this.httpClient.post<ListResponseModel<Freelancer>>(
+      newPath,
+      freelancer
+    );
+  }
 
   getMostPopularFreelancers(): Observable<ListResponseModel<Freelancer>> {
     let newPath = this.apiUrl + '/getMostPopularFreelancers';
