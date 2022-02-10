@@ -1,3 +1,4 @@
+import { AdvertDetailComponent } from './components/advert-detail/advert-detail.component';
 import { ProfileSettingComponent } from './components/profile-setting/profile-setting.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FavoritiesComponent } from './components/favorities/favorities.component';
@@ -86,6 +87,12 @@ const routes: Routes = [
     pathMatch: 'full',
     component: ProfileSettingComponent,
     canActivate: [LoginGuard, ExpiredTokenGuard],
+  },
+  {
+    path: 'adverts/:id',
+    pathMatch: 'full',
+    component: AdvertDetailComponent,
+    canActivate: [ExpiredTokenGuard],
   },
 ];
 

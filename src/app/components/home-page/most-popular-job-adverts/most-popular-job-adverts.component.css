@@ -141,7 +141,8 @@
 }
 
 .card-description {
-  min-height: 38px;
+  min-height: 40px;
+  color: #2d3640;
 }
 
 .spinner-border {

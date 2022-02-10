@@ -1,3 +1,4 @@
+import { SingleResponseModel } from './../models/singleResponseModel';
 import { AdvertSearchFilter } from './../models/advertSearchFilter';
 import { AdvertFilter } from '../models/advertFilter';
 import { ListResponseModel } from './../models/listResponseModel';
@@ -14,6 +15,11 @@ export class AdvertService {
   apiUrl = `${environment.apiUrl}/adverts`;
 
   constructor(private httpClient: HttpClient) {}
+
+  getById(id: number): Observable<SingleResponseModel<Advert>> {
+    let newPath = this.apiUrl + '/getById?id=' + id;
+    return this.httpClient.get<SingleResponseModel<Advert>>(newPath);
+  }
 
   getByFreelancerId(
     freelancerId: number

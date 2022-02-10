@@ -29,12 +29,14 @@
         *ngFor="let advert of mostPopularJobAdverts; let index = index"
         [ngStyle]="{ width: cardWidth }"
       >
-        <img
-          src="{{ advert.imagePath }}"
-          height="175px"
-          class="card-img-top"
-          alt="..."
-        />
+        <a routerLink="/adverts/{{ advert.id }}"
+          ><img
+            src="{{ advert.imagePath }}"
+            height="175px"
+            class="card-img-top"
+            alt="..."
+        /></a>
+
         <div class="card-body">
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
@@ -78,7 +80,14 @@
               </div>
             </li>
             <li class="list-group-item" style="margin-top: -19px">
-              <h6 class="card-text card-description">{{ advert.title }}</h6>
+              <a
+                routerLink="/adverts/{{ advert.id }}"
+                class="text-decoration-none"
+                aria-expanded="false"
+                ><h6 class="card-text card-description">
+                  {{ advert.title }}
+                </h6></a
+              >
             </li>
             <li class="list-group-item favorite">
               <p class="card-text">
