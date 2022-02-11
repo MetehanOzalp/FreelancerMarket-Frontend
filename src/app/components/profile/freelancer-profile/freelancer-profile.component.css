@@ -4,7 +4,8 @@ body {
   color: #69707a;
 }
 .img-account-profile {
-  height: 10rem;
+  width: 160px;
+  height: 160px;
 }
 .rounded-circle {
   border-radius: 50% !important;
@@ -125,4 +126,29 @@ body {
 
 .bi-x {
   color: #e83c5f;
+}
+
+.edit-button {
+  position: absolute;
+  top: 22%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #555;
+  color: #26ca9a;
+  font-size: 16px;
+  width: 0%;
+  height: 0%;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.bi {
+  cursor: pointer;
+}
+
+.bg-danger {
+  background-color: #e83c5f !important;
 }

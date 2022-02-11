@@ -23,6 +23,14 @@ export class FreelancerService {
     );
   }
 
+  updateImage(freelancerImage: any): Observable<any> {
+    let newPath = this.apiUrl + '/imageUpdate';
+    return this.httpClient.post<ResponseModel>(newPath, freelancerImage, {
+      reportProgress: true,
+      observe: 'events',
+    });
+  }
+
   getMostPopularFreelancers(): Observable<ListResponseModel<Freelancer>> {
     let newPath = this.apiUrl + '/getMostPopularFreelancers';
     return this.httpClient.get<ListResponseModel<Freelancer>>(newPath);

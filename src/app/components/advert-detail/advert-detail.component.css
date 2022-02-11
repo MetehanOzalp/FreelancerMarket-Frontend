@@ -132,3 +132,8 @@ button:hover {
 .others:hover {
   text-decoration: underline;
 }
+
+.freelancer-image {
+  width: 150px;
+  height: 150px;
+}
