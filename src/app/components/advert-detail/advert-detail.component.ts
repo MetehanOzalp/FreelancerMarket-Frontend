@@ -112,15 +112,12 @@ export class AdvertDetailComponent implements OnInit {
   }
 
   getOrdersByFreelancerId(freelancerId: number) {
-    this.orderService.getByFreelancerId(freelancerId).subscribe(
-      (response) => {
-        this.orders = response.data;
+    this.orderService.getByFreelancerId(freelancerId).subscribe((response) => {
+      this.orders = response.data;
+      if (this.orders.length != 0) {
         this.canCommentCheck();
-      },
-      (responseError) => {
-        this.toastrService.error(responseError.error.message, 'Hata');
       }
-    );
+    });
   }
 
   getLastCompletedOrderDate() {

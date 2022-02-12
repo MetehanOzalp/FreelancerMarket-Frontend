@@ -47,14 +47,9 @@ export class FreelancerDetailComponent implements OnInit {
   }
 
   getOrdersByFreelancerId(freelancerId: number) {
-    this.orderService.getByFreelancerId(freelancerId).subscribe(
-      (response) => {
-        this.orders = response.data;
-      },
-      (responseError) => {
-        this.toastrService.error(responseError.error.message, 'Hata');
-      }
-    );
+    this.orderService.getByFreelancerId(freelancerId).subscribe((response) => {
+      this.orders = response.data;
+    });
   }
 
   getLastCompletedOrderDate() {
