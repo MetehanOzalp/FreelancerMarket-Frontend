@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "glob": "_redirects",
+            "input": "src",
+            "output": "/",
             "outputPath": "dist/freelancer-market-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",

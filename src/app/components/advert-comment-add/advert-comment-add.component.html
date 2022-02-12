@@ -1,0 +1,34 @@
+<div class="card shadow mb-4">
+  <div class="card-body" style="padding: 25px">
+    <h5 class="comments mt-3 mb-3">Yorum Yap</h5>
+    <form [formGroup]="advertCommentAddForm">
+      <div class="row gx-3 mb-3">
+        <div class="col-md-12">
+          <div class="input-group">
+            <textarea
+              class="input-group__input"
+              id="inputAbout"
+              type="text"
+              rows="10"
+              style="height: 150px"
+              formControlName="content"
+              placeholder="&nbsp;"
+            ></textarea>
+            <label class="input-group__label" for="inputAbout"
+              >Birşeyler yaz...</label
+            >
+          </div>
+        </div>
+        <hr class="mt-2" />
+      </div>
+      <button
+        class="btn btn-primary"
+        type="button"
+        [disabled]="!advertCommentAddForm.valid"
+        (click)="add()"
+      >
+        Yorum Yap
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,3 +1,8 @@
+import { AdvertComment } from './../../models/advertComment';
+import { AdvertCommentService } from './../../services/advert-comment.service';
+import { UserService } from './../../services/user.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from './../../services/auth.service';
 import { Order } from './../../models/order';
 import { OrderService } from './../../services/order.service';
 import { ToastrService } from 'ngx-toastr';
@@ -14,15 +19,21 @@ import { Component, OnInit } from '@angular/core';
 export class AdvertDetailComponent implements OnInit {
   advert: Advert = {};
   adverts: Advert[] = [];
+  advertComments: AdvertComment[] = [];
   orders: Order[] = [];
   dataLoaded: boolean = false;
+  canComment: boolean = false;
+  userId: number;
 
   constructor(
     private router: Router,
+    private userService: UserService,
     private orderService: OrderService,
     private advertService: AdvertService,
     private toastrService: ToastrService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private jwtHelperService: JwtHelperService,
+    private advertCommentService: AdvertCommentService
   ) {}
 
   ngOnInit(): void {
@@ -39,10 +50,22 @@ export class AdvertDetailComponent implements OnInit {
         this.advert = response.data;
         this.getAdvertsByFreelancerId(this.advert.freelancerId);
         this.getOrdersByFreelancerId(this.advert.freelancerId);
+        this.getAdvertCommentsByAdvertId(this.advert.id);
         this.dataLoaded = true;
       },
       (responseError) => {
         this.router.navigate(['/']);
+        this.toastrService.error(responseError.error.message, 'Hata');
+      }
+    );
+  }
+
+  getAdvertCommentsByAdvertId(id: number) {
+    this.advertCommentService.getByAdvertId(id).subscribe(
+      (response) => {
+        this.advertComments = response.data;
+      },
+      (responseError) => {
         this.toastrService.error(responseError.error.message, 'Hata');
       }
     );
@@ -68,10 +91,31 @@ export class AdvertDetailComponent implements OnInit {
     );
   }
 
+  canCommentCheck() {
+    if (localStorage.getItem('token')) {
+      this.userService
+        .getByUserName(
+          this.jwtHelperService.decodeToken(localStorage.getItem('token')).sub
+        )
+        .subscribe((response) => {
+          this.userId = response.data.id;
+          this.orders.forEach((element) => {
+            if (
+              element.userId == this.userId &&
+              element.advertId == this.advert.id
+            ) {
+              this.canComment = true;
+            }
+          });
+        });
+    }
+  }
+
   getOrdersByFreelancerId(freelancerId: number) {
     this.orderService.getByFreelancerId(freelancerId).subscribe(
       (response) => {
         this.orders = response.data;
+        this.canCommentCheck();
       },
       (responseError) => {
         this.toastrService.error(responseError.error.message, 'Hata');

@@ -56,38 +56,46 @@
           <div class="card-body">
             <h5 class="comments mt-3">Yorumlar</h5>
             <div class="row">
-              <div class="card mb-3">
+              <div class="card" *ngFor="let advertComment of advertComments">
                 <div class="card-body">
                   <div class="d-flex flex-start">
                     <img
                       class="rounded-circle shadow-1-strong me-3"
-                      src="{{ advert.imagePath }}"
+                      src="{{ advertComment.user.imagePath }}"
                       alt="avatar"
                       width="50"
                       height="50"
                     />
                     <div class="w-100">
                       <div
-                        class="d-flex justify-content-between align-items-center mb-3"
+                        class="d-flex justify-content-between align-items-center"
                       >
                         <h6 class="commenter fw-bold mb-0">
-                          mozalp
+                          {{ advertComment.user.userName }}
                           <br />
-                          <span class="comment-content"
-                            >Lorem Ipsum is simply dummy text of the printing
-                            and typesetting industry.</span
-                          >
+                          <span class="comment-content">{{
+                            advertComment.content
+                          }}</span>
                         </h6>
-                        <p class="day-ago mb-0">2 gün önce</p>
+                        <p class="day-ago mb-0">
+                          {{ advertComment.date | dateAgo }}
+                        </p>
                       </div>
                     </div>
                   </div>
-                  <hr />
                 </div>
+                <hr />
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="col mb-5 mt-5">
+        <app-advert-comment-add
+          *ngIf="canComment"
+          [userId]="userId"
+          [advertId]="advert.id"
+        ></app-advert-comment-add>
       </div>
     </div>
     <div class="col-md-4">

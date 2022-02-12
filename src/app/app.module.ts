@@ -33,6 +33,7 @@ import { FreelancerProfileComponent } from './components/profile/freelancer-prof
 import { ProfileSettingComponent } from './components/profile-setting/profile-setting.component';
 import { ChangePasswordComponent } from './components/profile-setting/change-password/change-password.component';
 import { AdvertDetailComponent } from './components/advert-detail/advert-detail.component';
+import { AdvertCommentAddComponent } from './components/advert-comment-add/advert-comment-add.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -64,6 +65,7 @@ export function tokenGetter() {
     ProfileSettingComponent,
     ChangePasswordComponent,
     AdvertDetailComponent,
+    AdvertCommentAddComponent,
   ],
   imports: [
     BrowserModule,
