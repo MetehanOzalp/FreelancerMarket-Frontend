@@ -22,7 +22,6 @@ export class FavoritiesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('geldi');
     this.getUser();
   }
 

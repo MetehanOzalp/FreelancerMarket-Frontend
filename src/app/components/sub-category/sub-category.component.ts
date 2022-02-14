@@ -31,11 +31,28 @@ export class SubCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       this.subCategoryName = params['sub-category-name'].replace(/-/g, ' ');
+      this.formatTheSubCategoryName();
       this.getNameOfSubCategory();
       if (params['sub-category-name'] && params['filter']) {
         this.filter = JSON.parse(params['filter']);
       }
     });
+  }
+
+  formatTheSubCategoryName() {
+    if (this.subCategoryName) {
+      this.subCategoryName = this.subCategoryName
+        .toLowerCase()
+        .split(' ')
+        .map(function (i: any) {
+          if (i.length > 2) {
+            return i.charAt(0).toUpperCase() + i.substr(1);
+          } else {
+            return i;
+          }
+        })
+        .join(' ');
+    }
   }
 
   getNameOfSubCategory() {

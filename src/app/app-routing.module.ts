@@ -1,3 +1,4 @@
+import { NaviComponent } from './components/navi/navi.component';
 import { AdvertDetailComponent } from './components/advert-detail/advert-detail.component';
 import { ProfileSettingComponent } from './components/profile-setting/profile-setting.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -18,33 +19,75 @@ import { TopCategoryComponent } from './components/top-category/top-category.com
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    component: HomePageComponent,
-    canActivate: [ExpiredTokenGuard],
-  },
-  {
-    path: 'top-categories/:top-category-name',
-    pathMatch: 'full',
-    component: TopCategoryComponent,
-    canActivate: [ExpiredTokenGuard],
-  },
-  {
-    path: 'sub-categories/:sub-category-name',
-    pathMatch: 'full',
-    component: SubCategoryComponent,
-    canActivate: [ExpiredTokenGuard],
-  },
-  {
-    path: 'sub-categories/:sub-category-name/:filter',
-    pathMatch: 'full',
-    component: SubCategoryComponent,
-    canActivate: [ExpiredTokenGuard],
-  },
-  {
-    path: 'search/:filter',
-    pathMatch: 'full',
-    component: SearchComponent,
-    canActivate: [ExpiredTokenGuard],
+    component: NaviComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: HomePageComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'top-categories/:top-category-name',
+        pathMatch: 'full',
+        component: TopCategoryComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'sub-categories/:sub-category-name',
+        pathMatch: 'full',
+        component: SubCategoryComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'sub-categories/:sub-category-name/:filter',
+        pathMatch: 'full',
+        component: SubCategoryComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'search/:filter',
+        pathMatch: 'full',
+        component: SearchComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'users/:userName',
+        pathMatch: 'full',
+        component: UserDetailComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'wallet',
+        pathMatch: 'full',
+        component: WalletComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
+      {
+        path: 'favorities',
+        pathMatch: 'full',
+        component: FavoritiesComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
+      {
+        path: 'profile',
+        pathMatch: 'full',
+        component: ProfileComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
+      {
+        path: 'profile/settings',
+        pathMatch: 'full',
+        component: ProfileSettingComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
+      {
+        path: 'adverts/:id',
+        pathMatch: 'full',
+        component: AdvertDetailComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+    ],
   },
   {
     path: 'register',
@@ -56,42 +99,6 @@ const routes: Routes = [
     path: 'login',
     pathMatch: 'full',
     component: LoginComponent,
-    canActivate: [ExpiredTokenGuard],
-  },
-  {
-    path: 'users/:userName',
-    pathMatch: 'full',
-    component: UserDetailComponent,
-    canActivate: [ExpiredTokenGuard],
-  },
-  {
-    path: 'wallet',
-    pathMatch: 'full',
-    component: WalletComponent,
-    canActivate: [LoginGuard, ExpiredTokenGuard],
-  },
-  {
-    path: 'favorities',
-    pathMatch: 'full',
-    component: FavoritiesComponent,
-    canActivate: [LoginGuard, ExpiredTokenGuard],
-  },
-  {
-    path: 'profile',
-    pathMatch: 'full',
-    component: ProfileComponent,
-    canActivate: [LoginGuard, ExpiredTokenGuard],
-  },
-  {
-    path: 'profile/settings',
-    pathMatch: 'full',
-    component: ProfileSettingComponent,
-    canActivate: [LoginGuard, ExpiredTokenGuard],
-  },
-  {
-    path: 'adverts/:id',
-    pathMatch: 'full',
-    component: AdvertDetailComponent,
     canActivate: [ExpiredTokenGuard],
   },
 ];

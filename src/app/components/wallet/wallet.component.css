@@ -116,3 +116,7 @@ input[type="checkbox"] {
   padding: 50px;
   color: #e83c5f;
 }
+
+.spinner-border {
+  color: #e83c5f;
+}

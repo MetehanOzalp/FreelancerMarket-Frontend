@@ -27,7 +27,6 @@ export class WalletComponent implements OnInit {
       .subscribe((response) => {
         this.user = response.data;
         this.user.walletTransactions.forEach((element) => {
-          console.log('geldi');
           if (element.transactionName == 'MONEY_WITHDRAW') {
             element.transactionName = 'Giden Para';
           } else if (element.transactionName == 'MONEY_DEPOSIT') {
