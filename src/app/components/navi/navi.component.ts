@@ -17,6 +17,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 })
 export class NaviComponent implements OnInit {
   isAuthenticated: boolean = false;
+  isFreelancer: boolean = false;
   topCategories: TopCategory[] = [];
   subCategories: SubCategory[] = [];
   filter: AdvertSearchFilter = {};
@@ -54,6 +55,11 @@ export class NaviComponent implements OnInit {
     ).sub;
     this.userService.getByUserName(userName).subscribe((response) => {
       this.user = response.data;
+      this.user.operationClaims.forEach((element) => {
+        if (element.claimName == 'ROLE_FREELANCER') {
+          this.isFreelancer = true;
+        }
+      });
     });
   }
 

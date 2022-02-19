@@ -128,8 +128,8 @@
           <img
             src="{{ user.imagePath }}"
             alt=""
-            width="40"
-            height="40"
+            width="50"
+            height="50"
             class="rounded-circle"
           />{{ user.name }} {{ user.surName }}
         </a>
@@ -137,6 +137,11 @@
           <li><a class="dropdown-item" routerLink="/profile">Profilim</a></li>
           <li>
             <a class="dropdown-item" routerLink="/profile/settings">Hesabım</a>
+          </li>
+          <li *ngIf="isFreelancer">
+            <a class="dropdown-item" routerLink="/freelancer/panel"
+              >Freelancer Panel</a
+            >
           </li>
           <li><hr class="dropdown-divider" /></li>
           <li><a class="dropdown-item" (click)="logout()">Çıkış Yap</a></li>

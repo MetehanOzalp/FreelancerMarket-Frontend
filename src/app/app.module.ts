@@ -34,6 +34,13 @@ import { ProfileSettingComponent } from './components/profile-setting/profile-se
 import { ChangePasswordComponent } from './components/profile-setting/change-password/change-password.component';
 import { AdvertDetailComponent } from './components/advert-detail/advert-detail.component';
 import { AdvertCommentAddComponent } from './components/advert-comment-add/advert-comment-add.component';
+import { FreelancerPanelComponent } from './components/freelancer-panel/freelancer-panel.component';
+import { AdvertAddComponent } from './components/freelancer-panel/advert-add/advert-add.component';
+import { FreelancerPanelSidebarComponent } from './components/freelancer-panel/freelancer-panel-sidebar/freelancer-panel-sidebar.component';
+import { MyAdvertsComponent } from './components/freelancer-panel/my-adverts/my-adverts.component';
+import { AdvertDeleteComponent } from './components/freelancer-panel/advert-delete/advert-delete.component';
+import { AdvertEditComponent } from './components/freelancer-panel/advert-edit/advert-edit.component';
+import { DefaultComponent } from './components/freelancer-panel/default/default.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -66,6 +73,13 @@ export function tokenGetter() {
     ChangePasswordComponent,
     AdvertDetailComponent,
     AdvertCommentAddComponent,
+    FreelancerPanelComponent,
+    AdvertAddComponent,
+    FreelancerPanelSidebarComponent,
+    MyAdvertsComponent,
+    AdvertDeleteComponent,
+    AdvertEditComponent,
+    DefaultComponent,
   ],
   imports: [
     BrowserModule,

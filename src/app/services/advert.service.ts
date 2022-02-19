@@ -1,3 +1,4 @@
+import { ResponseModel } from './../models/responseModel';
 import { SingleResponseModel } from './../models/singleResponseModel';
 import { AdvertSearchFilter } from './../models/advertSearchFilter';
 import { AdvertFilter } from '../models/advertFilter';
@@ -16,9 +17,35 @@ export class AdvertService {
 
   constructor(private httpClient: HttpClient) {}
 
+  add(advertAddModel: any): Observable<any> {
+    let newPath = this.apiUrl + '/add';
+    return this.httpClient.post<ResponseModel>(newPath, advertAddModel, {
+      reportProgress: true,
+      observe: 'events',
+    });
+  }
+
+  update(advertUpdateModel: any): Observable<any> {
+    let newPath = this.apiUrl + '/update';
+    return this.httpClient.post<ResponseModel>(newPath, advertUpdateModel, {
+      reportProgress: true,
+      observe: 'events',
+    });
+  }
+
+  delete(advertId: number): Observable<ResponseModel> {
+    let newPath = this.apiUrl + '/delete?advertId=' + advertId;
+    return this.httpClient.delete<ResponseModel>(newPath);
+  }
+
   getById(id: number): Observable<SingleResponseModel<Advert>> {
     let newPath = this.apiUrl + '/getById?id=' + id;
     return this.httpClient.get<SingleResponseModel<Advert>>(newPath);
+  }
+
+  getByUserName(userName: string): Observable<ListResponseModel<Advert>> {
+    let newPath = this.apiUrl + '/getByUserName?userName=' + userName;
+    return this.httpClient.get<ListResponseModel<Advert>>(newPath);
   }
 
   getByFreelancerId(

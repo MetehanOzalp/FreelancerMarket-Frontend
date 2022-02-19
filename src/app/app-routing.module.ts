@@ -1,3 +1,8 @@
+import { DefaultComponent } from './components/freelancer-panel/default/default.component';
+import { FreelancerGuard } from './guards/freelancer.guard';
+import { MyAdvertsComponent } from './components/freelancer-panel/my-adverts/my-adverts.component';
+import { AdvertAddComponent } from './components/freelancer-panel/advert-add/advert-add.component';
+import { FreelancerPanelComponent } from './components/freelancer-panel/freelancer-panel.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { AdvertDetailComponent } from './components/advert-detail/advert-detail.component';
 import { ProfileSettingComponent } from './components/profile-setting/profile-setting.component';
@@ -100,6 +105,37 @@ const routes: Routes = [
     pathMatch: 'full',
     component: LoginComponent,
     canActivate: [ExpiredTokenGuard],
+  },
+  {
+    path: 'freelancer/panel',
+    component: FreelancerPanelComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: DefaultComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'advert/add',
+        pathMatch: 'full',
+        component: AdvertAddComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'wallet',
+        pathMatch: 'full',
+        component: WalletComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'my-adverts',
+        pathMatch: 'full',
+        component: MyAdvertsComponent,
+        canActivate: [ExpiredTokenGuard],
+      },
+    ],
+    canActivate: [LoginGuard, FreelancerGuard, ExpiredTokenGuard],
   },
 ];
 

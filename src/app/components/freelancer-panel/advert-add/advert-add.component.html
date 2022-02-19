@@ -1,0 +1,177 @@
+<div class="container-xl px-4 mt-4">
+  <div class="card shadow mb-4">
+    <div class="card-header">İlan Paylaş</div>
+    <div class="card-body">
+      <form [formGroup]="advertAddForm">
+        <div class="row gx-3 mb-3">
+          <div class="col-md-8">
+            <div class="input-group">
+              <input
+                class="input-group__input"
+                id="inputTitle"
+                type="text"
+                formControlName="title"
+                placeholder="&nbsp;"
+              />
+              <label class="input-group__label" for="inputTitle">Başlık</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  advertAddForm.controls['title']?.errors &&
+                  advertAddForm.controls['title']?.touched
+                "
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="row gx-3 mb-3">
+          <div class="col-md-4">
+            <div class="input-group">
+              <select
+                class="input-group__input"
+                id="topCategories"
+                formControlName="topCategoryId"
+              >
+                <option value="">Üst Kategori Seçiniz</option>
+                <option
+                  *ngFor="let topCategory of topCategories"
+                  [value]="topCategory.id"
+                >
+                  {{ topCategory.name }}
+                </option>
+              </select>
+              <label class="input-group__label" for="topCategories"
+                >Üst Kategori</label
+              >
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  advertAddForm.controls['topCategoryId']?.errors &&
+                  advertAddForm.controls['topCategoryId']?.touched
+                "
+              ></i>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="input-group">
+              <select
+                class="input-group__input"
+                id="subCategories"
+                formControlName="subCategoryId"
+                [attr.disabled]="
+                  advertAddForm.get('topCategoryId').value ? null : true
+                "
+              >
+                <option value="">Alt Kategori Seçiniz</option>
+                <option
+                  *ngFor="
+                    let subCategory of getSubCategoryByTopCategoryId(
+                      advertAddForm.get('topCategoryId').value
+                    )
+                  "
+                  [value]="subCategory.id"
+                >
+                  {{ subCategory.name }}
+                </option>
+              </select>
+              <label class="input-group__label" for="subCategories"
+                >Alt Kategori</label
+              >
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  advertAddForm.controls['subCategoryId']?.errors &&
+                  advertAddForm.controls['subCategoryId']?.touched
+                "
+              ></i>
+            </div>
+          </div>
+          <div class="col-md-1">
+            <div class="input-group">
+              <input
+                class="input-group__input"
+                id="inputPrice"
+                type="number"
+                formControlName="price"
+                placeholder="&nbsp;"
+              />
+              <label class="input-group__label" for="inputPrice">Fiyat</label>
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  advertAddForm.controls['price']?.errors &&
+                  advertAddForm.controls['price']?.touched
+                "
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="row gx-3 mb-3">
+          <div class="col-md-12">
+            <div class="input-group">
+              <textarea
+                class="input-group__input"
+                id="inputInfo"
+                type="text"
+                rows="10"
+                style="height: 250px"
+                formControlName="info"
+                placeholder="&nbsp;"
+              ></textarea>
+              <label class="input-group__label" for="inputInfo"
+                >İlan Açıklaması</label
+              >
+              <i
+                class="bi bi-x"
+                *ngIf="
+                  advertAddForm.controls['info']?.errors &&
+                  advertAddForm.controls['info']?.touched
+                "
+              ></i>
+            </div>
+          </div>
+        </div>
+        <div class="row gx-3 mb-3">
+          <img
+            class="advert-img mx-auto d-block mb-2"
+            *ngIf="filePath"
+            src="{{ filePath }}"
+            alt=""
+          />
+          <div class="d-flex justify-content-center">
+            <label class="btn-circle mr-3">
+              <input
+                type="file"
+                id="file"
+                (change)="onFileSelected($event)"
+                name="name"
+                accept=".png, .jpg, .jpeg"
+              />
+              <i class="bi bi-card-image"></i>
+            </label>
+          </div>
+          <p class="d-flex justify-content-center">Resim Yükle</p>
+        </div>
+        <div class="progress" *ngIf="progress != 0">
+          <div
+            class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+            role="progressbar"
+            aria-valuenow="75"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            [style.width]="progress + '%'"
+          ></div>
+        </div>
+        <hr class="mt-4" />
+        <button
+          class="btn btn-primary"
+          type="button"
+          [disabled]="!advertAddForm.valid"
+          (click)="add()"
+        >
+          İlanı Paylaş
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

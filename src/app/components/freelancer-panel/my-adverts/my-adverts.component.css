@@ -1,0 +1,25 @@
+.card {
+  border-radius: 10px;
+}
+
+.spinner-border {
+  color: #e83c5f;
+}
+
+.edit-remove {
+  position: relative;
+  left: 60%;
+  margin-top: -775px;
+  border-radius: 100%;
+  margin-right: 10px;
+}
+
+.btn-success {
+  border-color: #26ca9a;
+  background-color: #26ca9a;
+}
+
+.btn-danger {
+  border-color: #e83c5f;
+  background-color: #e83c5f;
+}
