@@ -10,6 +10,7 @@ export interface Advert {
   info?: string;
   imagePath?: string;
   date?: Date;
+  averageScore?: number;
   freelancer?: Freelancer;
   subCategory?: SubCategory;
   advertComments?: AdvertComment[];

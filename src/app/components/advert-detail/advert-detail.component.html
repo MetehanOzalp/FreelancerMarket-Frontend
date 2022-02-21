@@ -53,17 +53,39 @@
       </div>
       <div class="col mb-5 mt-5">
         <div class="card shadow mb-4">
+          <div class="card-body"><h4 class="comments mt-3">Yorumlar</h4></div>
+          <div class="card-header mb-3" style="background-color: #f9fafb">
+            <h6 class="mt-3 mb-3 text-center" style="font-size: 18px">
+              Toplam
+              <b style="font-size: 25px">{{ advertComments.length }}</b>
+              değerlendirme
+              <br />
+              <span
+                style="color: #ffbf00; font-weight: bolder; font-size: 40px"
+              >
+                {{ advert.averageScore | number: "1.1-1" }}</span
+              ><i
+                class="bi bi-star-fill"
+                style="font-size: 40px; color: #ffbf00; margin-left: 5px"
+              ></i>
+            </h6>
+          </div>
           <div class="card-body">
-            <h5 class="comments mt-3">Yorumlar</h5>
             <div class="row">
               <div class="card" *ngFor="let advertComment of advertComments">
-                <div class="card-body">
+                <div
+                  class="card-body"
+                  style="
+                    padding-top: 0.25rem !important;
+                    padding-bottom: 0.25rem !important;
+                  "
+                >
                   <div class="d-flex flex-start">
                     <img
                       class="rounded-circle shadow-1-strong me-3"
                       src="{{ advertComment.user.imagePath }}"
                       alt="avatar"
-                      width="50"
+                      width="54.65"
                       height="50"
                     />
                     <div class="w-100">
@@ -72,6 +94,12 @@
                       >
                         <h6 class="commenter fw-bold mb-0">
                           {{ advertComment.user.userName }}
+                          <i class="bi bi-star-fill text-warning me-2"
+                            ><span
+                              style="font-style: normal; margin-left: 5px"
+                              >{{ advertComment.score | number: "1.1-1" }}</span
+                            ></i
+                          >
                           <br />
                           <span class="comment-content">{{
                             advertComment.content
@@ -117,6 +145,13 @@
                   <p class="text-secondary appellation mb-1">
                     {{ advert.freelancer.appellation }}
                   </p>
+                  <h6
+                    class="text-muted text-center"
+                    style="color: #ffbb00 !important"
+                  >
+                    {{ advert.freelancer.averageScore | number: "1.1-1" }}
+                    <i class="bi bi-star-fill" style="font-size: 20px"></i>
+                  </h6>
                   <button>Mesaj Gönder</button>
                 </div>
               </div>

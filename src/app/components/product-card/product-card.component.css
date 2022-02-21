@@ -167,3 +167,12 @@
 .favorite {
   height: 40px;
 }
+
+.star-area {
+  position: absolute;
+  background-color: #fff;
+  width: 75px;
+  height: 30px;
+  margin-top: 130px;
+  border-radius: 00px 15px 15px 0px;
+}

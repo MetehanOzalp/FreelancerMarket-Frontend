@@ -41,6 +41,7 @@ import { MyAdvertsComponent } from './components/freelancer-panel/my-adverts/my-
 import { AdvertDeleteComponent } from './components/freelancer-panel/advert-delete/advert-delete.component';
 import { AdvertEditComponent } from './components/freelancer-panel/advert-edit/advert-edit.component';
 import { DefaultComponent } from './components/freelancer-panel/default/default.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -94,6 +95,7 @@ export function tokenGetter() {
         tokenGetter: tokenGetter,
       },
     }),
+    NgxStarRatingModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

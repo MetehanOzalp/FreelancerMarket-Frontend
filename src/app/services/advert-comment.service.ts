@@ -23,4 +23,12 @@ export class AdvertCommentService {
     let newPath = this.apiUrl + '/getByAdvertId?advertCommentId=' + id;
     return this.httpClient.get<ListResponseModel<AdvertComment>>(newPath);
   }
+
+  getByFreelancerId(
+    freelancerId: number
+  ): Observable<ListResponseModel<AdvertComment>> {
+    let newPath =
+      this.apiUrl + '/getByFreelancerId?freelancerId=' + freelancerId;
+    return this.httpClient.get<ListResponseModel<AdvertComment>>(newPath);
+  }
 }

@@ -29,6 +29,21 @@
         *ngFor="let advert of mostPopularJobAdverts; let index = index"
         [ngStyle]="{ width: cardWidth }"
       >
+        <div class="star-area">
+          <i
+            class="bi bi-star-fill"
+            style="font-size: 20px; color: #ffbb00; margin-left: 10px"
+            ><span
+              style="
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 750;
+                margin-left: 10px;
+              "
+              >{{ advert.averageScore | number: "1.1-1" }}</span
+            ></i
+          >
+        </div>
         <a routerLink="/adverts/{{ advert.id }}"
           ><img
             src="{{ advert.imagePath }}"

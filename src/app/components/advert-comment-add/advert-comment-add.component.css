@@ -91,3 +91,13 @@
   border: none;
   border-radius: 10px;
 }
+
+.cont {
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: -5%;
+}
+
+div.stars {
+  width: 270px;
+}

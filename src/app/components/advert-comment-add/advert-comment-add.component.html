@@ -19,6 +19,25 @@
             >
           </div>
         </div>
+        <div class="col-md-12">
+          <div class="input-group">
+            <div class="row">
+              <div class="col">
+                Puanınız: {{ advertCommentAddForm.value.score }}
+              </div>
+              <div class="col">
+                <div class="cont">
+                  <div class="stars">
+                    <ngx-star-rating
+                      formControlName="score"
+                      [id]="'rating'"
+                    ></ngx-star-rating>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <hr class="mt-2" />
       </div>
       <button

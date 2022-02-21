@@ -28,6 +28,7 @@ export class AdvertCommentAddComponent implements OnInit {
       userId: [this.userId, Validators.required],
       advertId: [this.advertId, [Validators.required]],
       content: ['', [Validators.required]],
+      score: ['', [Validators.required, Validators.max(5)]],
     });
   }
 

@@ -4,6 +4,7 @@ export interface AdvertComment {
   userId: number;
   advertId: number;
   content: string;
+  score: number;
   date: Date;
   user: User;
 }

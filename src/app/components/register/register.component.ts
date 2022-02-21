@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
   createFreelancerRegisterForm() {
     this.freelancerRegisterForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      surname: ['', [Validators.required, Validators.minLength(3)]],
+      surName: ['', [Validators.required, Validators.minLength(3)]],
       userName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
   createEmployerRegisterForm() {
     this.employerRegisterForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      surname: ['', [Validators.required, Validators.minLength(3)]],
+      surName: ['', [Validators.required, Validators.minLength(3)]],
       userName: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],

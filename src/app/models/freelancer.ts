@@ -8,6 +8,7 @@ export interface Freelancer extends User {
   imagePath?: string;
   about?: string;
   appellation?: string;
+  averageScore?: number;
   skills?: Skill[];
   adverts?: Advert[];
   freelancerComments?: FreelancerComment[];

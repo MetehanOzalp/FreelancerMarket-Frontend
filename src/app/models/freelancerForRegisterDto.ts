@@ -1,6 +1,6 @@
 export interface FreelancerForRegisterDto {
   name: string;
-  surname: string;
+  surName: string;
   userName: string;
   email: string;
   password: string;
