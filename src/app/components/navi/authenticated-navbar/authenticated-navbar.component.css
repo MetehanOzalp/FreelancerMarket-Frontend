@@ -1,0 +1,67 @@
+.btn {
+  border-radius: 10px;
+}
+
+.btn-danger {
+  background-color: #e83c5f;
+  color: #fff;
+  border-color: #e83c5f;
+  margin-left: 10px;
+}
+
+.search-input-logout {
+  border-color: #fff;
+  border-radius: 10px;
+}
+
+@media all and (min-width: 992px) {
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
+}
+
+.input-field {
+  padding-left: 45px;
+}
+
+.input-field2 {
+  padding-left: 45px;
+  margin-left: 108px;
+  margin-top: -1px;
+  width: 432px;
+}
+
+.bi-search {
+  padding-top: 3px;
+  color: black;
+  min-width: 50px;
+  margin-left: 10px;
+  font-size: 1.5rem;
+}
+
+.bi-search2 {
+  padding-top: 3px;
+  color: black;
+  min-width: 50px;
+  margin-left: 118px;
+  font-size: 1.5rem;
+}
+
+.input-icons i {
+  position: absolute;
+}
+
+.input-icons {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.dropdown-item {
+  cursor: pointer;
+}

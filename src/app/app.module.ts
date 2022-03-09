@@ -42,6 +42,8 @@ import { AdvertDeleteComponent } from './components/freelancer-panel/advert-dele
 import { AdvertEditComponent } from './components/freelancer-panel/advert-edit/advert-edit.component';
 import { DefaultComponent } from './components/freelancer-panel/default/default.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
+import { AuthenticatedNavbarComponent } from './components/navi/authenticated-navbar/authenticated-navbar.component';
+import { UnauthenticatedNavbarComponent } from './components/navi/unauthenticated-navbar/unauthenticated-navbar.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -81,6 +83,8 @@ export function tokenGetter() {
     AdvertDeleteComponent,
     AdvertEditComponent,
     DefaultComponent,
+    AuthenticatedNavbarComponent,
+    UnauthenticatedNavbarComponent,
   ],
   imports: [
     BrowserModule,

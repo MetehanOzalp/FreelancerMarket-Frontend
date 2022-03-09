@@ -20,7 +20,6 @@ export class NaviComponent implements OnInit {
   isFreelancer: boolean = false;
   topCategories: TopCategory[] = [];
   subCategories: SubCategory[] = [];
-  filter: AdvertSearchFilter = {};
   user: User = {};
 
   constructor(
@@ -28,8 +27,7 @@ export class NaviComponent implements OnInit {
     private subCategoryService: SubCategoryService,
     private jwtHelperService: JwtHelperService,
     private authService: AuthService,
-    private userService: UserService,
-    private router: Router
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -79,18 +77,7 @@ export class NaviComponent implements OnInit {
     return this.subCategories.filter((x) => x.topCategoryId == id);
   }
 
-  createFilter() {
-    if (this.filter.term != undefined || this.filter.term != null) {
-      this.router.navigate(['search/', JSON.stringify(this.filter)]);
-    }
-  }
-
   getUrl(param: string) {
     return param.replace(/ /g, '-').toLocaleLowerCase('tr-TR');
-  }
-
-  logout() {
-    localStorage.clear();
-    window.location.reload();
   }
 }

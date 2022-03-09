@@ -1,0 +1,43 @@
+<header class="p-3 text-white" style="background-color: #201a3d">
+  <div class="container">
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+      <a class="navbar-brand" href="">
+        <img
+          src="../../../assets/images/logo-svg/koyu-zemin.svg"
+          alt=""
+          width="150"
+          height="35"
+          class="d-inline-block align-text-top"
+        />
+      </a>
+      <div class="col-4">
+        <form>
+          <div class="input-icons">
+            <i class="bi bi-search"></i>
+            <input
+              type="search"
+              (keydown.enter)="createFilter()"
+              [(ngModel)]="filter.term"
+              [ngModelOptions]="{ standalone: true }"
+              class="form-control form-control-dark search-input-logout input-field"
+              placeholder="Arama Yap..."
+              aria-label="Search"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="text-end d-flex justify-content-end">
+        <button
+          type="button"
+          class="btn btn-outline-light me-2"
+          routerLink="/login"
+        >
+          Giriş Yap
+        </button>
+        <button type="button" class="btn btn-danger" routerLink="/register">
+          Kayıt Ol
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

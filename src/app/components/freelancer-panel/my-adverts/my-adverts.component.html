@@ -1,13 +1,13 @@
-<div class="container mt-4">
+<div class="container px-4 mt-5">
   <h6 class="advert-count text-muted">{{ adverts.length }} iş ilanı bulundu</h6>
-  <div class="card shadow">
+  <div class="card mb-5 shadow">
     <div class="card-body">
       <div class="d-flex justify-content-center">
         <div class="spinner-border" role="status" *ngIf="!dataLoaded">
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
-      <div *ngFor="let advert of adverts" style="width: 20rem; float: left">
+      <div *ngFor="let advert of adverts" style="width: 19.344rem; float: left">
         <app-product-card [advert]="advert"> </app-product-card>
         <button
           type="button"
