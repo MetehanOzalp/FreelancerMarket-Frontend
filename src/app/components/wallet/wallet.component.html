@@ -44,55 +44,66 @@
               <span class="visually-hidden">Loading...</span>
             </div>
           </div>
-          <div class="card shadow" *ngIf="user.walletTransactions">
-            <div class="card-body">
-              <div class="row">
-                <div
-                  class="card"
-                  *ngFor="let walletTransaction of user.walletTransactions"
-                >
-                  <div class="card-body">
-                    <div class="d-flex flex-start">
-                      <div class="w-100">
-                        <div
-                          class="d-flex justify-content-between align-items-center"
-                        >
-                          <h6 class="fw-bold mb-0">
-                            <i
-                              class="bi bi-arrow-down-square-fill"
-                              style="
-                                font-size: 1.5rem;
-                                color: #26ca9a;
-                                margin-right: 5px;
-                              "
-                              *ngIf="
-                                walletTransaction.transactionName ==
-                                'Gelen Para'
-                              "
-                            ></i>
-                            <i
-                              class="bi bi-arrow-up-square-fill"
-                              style="
-                                font-size: 1.5rem;
-                                color: #e83c5f;
-                                margin-right: 5px;
-                              "
-                              *ngIf="
-                                walletTransaction.transactionName ==
-                                'Giden Para'
-                              "
-                            ></i
-                            >{{ walletTransaction.transactionName }}
-                            <br />
-                            <span class="text-muted">{{
-                              walletTransaction.date
-                            }}</span>
-                          </h6>
-                          <h3>{{ walletTransaction.amount }} TL</h3>
+          <div
+            class="pt-3 pe-3"
+            data-mdb-perfect-scrollbar="true"
+            style="
+              position: relative;
+              max-height: 510px;
+              overflow-y: scroll;
+              overflow: auto;
+            "
+          >
+            <div class="card shadow ms-3 mb-4" *ngIf="user.walletTransactions">
+              <div class="card-body">
+                <div class="row">
+                  <div
+                    class="card"
+                    *ngFor="let walletTransaction of user.walletTransactions"
+                  >
+                    <div class="card-body">
+                      <div class="d-flex flex-start">
+                        <div class="w-100">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <h6 class="fw-bold mb-0">
+                              <i
+                                class="bi bi-arrow-down-square-fill"
+                                style="
+                                  font-size: 1.5rem;
+                                  color: #26ca9a;
+                                  margin-right: 5px;
+                                "
+                                *ngIf="
+                                  walletTransaction.transactionName ==
+                                  'Gelen Para'
+                                "
+                              ></i>
+                              <i
+                                class="bi bi-arrow-up-square-fill"
+                                style="
+                                  font-size: 1.5rem;
+                                  color: #e83c5f;
+                                  margin-right: 5px;
+                                "
+                                *ngIf="
+                                  walletTransaction.transactionName ==
+                                  'Giden Para'
+                                "
+                              ></i
+                              >{{ walletTransaction.transactionName }}
+                              <br />
+                              <span class="text-muted">{{
+                                walletTransaction.date
+                              }}</span>
+                            </h6>
+                            <h3>{{ walletTransaction.amount }} TL</h3>
+                          </div>
                         </div>
                       </div>
+                      <hr />
                     </div>
-                    <hr />
                   </div>
                 </div>
               </div>

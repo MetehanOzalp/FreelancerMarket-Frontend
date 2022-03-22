@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="spinner-border" role="status" *ngIf="!dataLoaded">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<ng-container *ngIf="dataLoaded"
+  ><div
+    class="pt-3 pe-3"
+    data-mdb-perfect-scrollbar="true"
+    style="
+      position: relative;
+      max-height: 500px;
+      overflow-y: scroll;
+      overflow: auto;
+      display: flex;
+      flex-direction: column-reverse;
+    "
+  >
+    <ng-container *ngFor="let message of messages">
+      <div
+        class="d-flex flex-row justify-content-start mt-3"
+        *ngIf="message.from == receiver"
+      >
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+          alt="avatar 1"
+          style="width: 45px; height: 100%"
+        />
+        <div>
+          <p
+            class="small p-2 ms-3 mb-1 rounded-3"
+            style="background-color: #f5f6f7"
+          >
+            {{ message.content }}
+          </p>
+          <p class="small ms-3 mb-3 rounded-3 text-muted float-end">
+            {{ message.id | date: "shortTime" }} | {{ message.id | date }}
+          </p>
+        </div>
+      </div>
+      <div
+        class="d-flex flex-row justify-content-end mt-3"
+        *ngIf="message.from == sender"
+      >
+        <div>
+          <p class="small p-2 me-3 mb-1 text-white rounded-3 bg-primary">
+            {{ message.content }}
+          </p>
+          <p class="small me-3 mb-3 rounded-3 text-muted">
+            {{ message.id | date: "shortTime" }} | {{ message.id | date }}
+          </p>
+        </div>
+        <img
+          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+          alt="avatar 1"
+          style="width: 45px; height: 100%"
+        />
+      </div>
+    </ng-container>
+  </div>
+
+  <div
+    class="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2 content"
+  >
+    <img
+      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
+      alt="avatar 3"
+      style="width: 40px; height: 100%"
+    />
+    <input
+      type="text"
+      (keydown.enter)="sendMessage()"
+      class="form-control form-control-lg"
+      id="exampleFormControlInput2"
+      [(ngModel)]="message"
+      placeholder="Mesaj Yaz"
+    />
+    <a class="ms-1" (click)="sendMessage()"><i class="bi bi-send-fill"></i></a>
+  </div>
+</ng-container>

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AdvertCommentService } from './../../services/advert-comment.service';
 import { AdvertComment } from './../../models/advertComment';
 import { OrderService } from './../../services/order.service';
@@ -22,6 +23,7 @@ export class FreelancerDetailComponent implements OnInit {
   orders: Order[] = [];
 
   constructor(
+    private router: Router,
     private orderService: OrderService,
     private advertService: AdvertService,
     private toastrService: ToastrService,
@@ -93,5 +95,9 @@ export class FreelancerDetailComponent implements OnInit {
     ];
     var newDate = new Date(date);
     return months[newDate.getMonth()] + ' ' + newDate.getFullYear();
+  }
+
+  sendMessage(userName: string) {
+    this.router.navigate(['/messages/' + userName]);
   }
 }

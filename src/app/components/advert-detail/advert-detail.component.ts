@@ -23,6 +23,7 @@ export class AdvertDetailComponent implements OnInit {
   orders: Order[] = [];
   dataLoaded: boolean = false;
   canComment: boolean = false;
+  commentLoaded: boolean = false;
   userId: number;
 
   constructor(
@@ -64,6 +65,7 @@ export class AdvertDetailComponent implements OnInit {
     this.advertCommentService.getByAdvertId(id).subscribe(
       (response) => {
         this.advertComments = response.data;
+        this.commentLoaded = true;
       },
       (responseError) => {
         this.toastrService.error(responseError.error.message, 'Hata');
@@ -152,5 +154,9 @@ export class AdvertDetailComponent implements OnInit {
 
   getUrl(param: string) {
     return param.replace(/ /g, '-').toLocaleLowerCase('tr-TR');
+  }
+
+  sendMessage(userName: string) {
+    this.router.navigate(['/messages/' + userName]);
   }
 }

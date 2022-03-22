@@ -1,0 +1,14 @@
+.modal-content {
+  border: none;
+  border-radius: 10px !important;
+}
+
+.btn-success {
+  border-color: #26ca9a;
+  background-color: #26ca9a;
+}
+
+.btn-danger {
+  border-color: #e83c5f;
+  background-color: #e83c5f;
+}

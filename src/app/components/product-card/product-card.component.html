@@ -69,7 +69,9 @@
           routerLink="/adverts/{{ advert.id }}"
           class="text-decoration-none"
           aria-expanded="false"
-          ><h6 class="card-description card-text">{{ advert.title }}</h6></a
+          ><h6 class="card-description card-text">
+            {{ advert.title | restrictLength }}
+          </h6></a
         >
       </li>
       <li class="list-group-item favorite">

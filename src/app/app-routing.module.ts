@@ -1,3 +1,5 @@
+import { MyOrdersComponent } from './components/orders/my-orders/my-orders.component';
+import { MessageComponent } from './components/message/message.component';
 import { DefaultComponent } from './components/freelancer-panel/default/default.component';
 import { FreelancerGuard } from './guards/freelancer.guard';
 import { MyAdvertsComponent } from './components/freelancer-panel/my-adverts/my-adverts.component';
@@ -92,6 +94,24 @@ const routes: Routes = [
         component: AdvertDetailComponent,
         canActivate: [ExpiredTokenGuard],
       },
+      {
+        path: 'messages',
+        pathMatch: 'full',
+        component: MessageComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
+      {
+        path: 'messages/:userName',
+        pathMatch: 'full',
+        component: MessageComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
+      {
+        path: 'my-orders',
+        pathMatch: 'full',
+        component: MyOrdersComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
     ],
   },
   {
@@ -133,6 +153,18 @@ const routes: Routes = [
         pathMatch: 'full',
         component: MyAdvertsComponent,
         canActivate: [ExpiredTokenGuard],
+      },
+      {
+        path: 'messages',
+        pathMatch: 'full',
+        component: MessageComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
+      {
+        path: 'messages/:userName',
+        pathMatch: 'full',
+        component: MessageComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
       },
     ],
     canActivate: [LoginGuard, FreelancerGuard, ExpiredTokenGuard],

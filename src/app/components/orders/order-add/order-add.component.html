@@ -1,0 +1,44 @@
+<div
+  class="modal fade"
+  id="orderAdd"
+  tabindex="-1"
+  aria-labelledby="orderAdd"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderAdd">Siparişi Tamamla</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <b style="color: #e83c5f">{{ advert.freelancer.userName }}</b>
+        Kullanıcısının
+        <b style="color: #201a3d">{{ advert.title | pointControl }}</b> isimli
+        ilanını
+        <b style="color: #26ca9a">{{
+          advert.price | currency: "TRY":"₺":"3.1-1"
+        }}</b>
+        karşılığında sipariş vermek istiyormusunuz?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          Kapat
+        </button>
+        <button
+          type="button"
+          (click)="addOrder()"
+          data-bs-dismiss="modal"
+          class="btn btn-success"
+        >
+          Sipariş Ver
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

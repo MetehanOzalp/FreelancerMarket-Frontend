@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://freelancermarket-backend.herokuapp.com/api',
+  apiUrl: 'http://localhost:8080/api',
+  firebaseConfig: {
+    apiKey: 'AIzaSyDuhmaenMb71D9HZ-xW7Gzi5qgsgGz2wr0',
+    authDomain: 'pro3-92e17.firebaseapp.com',
+    projectId: 'pro3-92e17',
+    storageBucket: 'pro3-92e17.appspot.com',
+    messagingSenderId: '231459185601',
+    appId: '1:231459185601:web:51eaf344282efd68b84540',
+  },
 };
 
 /*

@@ -27,7 +27,9 @@
                     >({{ advertComments.length }})</span
                   >
                 </h6>
-                <button>Mesaj Gönder</button>
+                <button (click)="sendMessage(freelancer.userName)">
+                  Mesaj Gönder
+                </button>
               </div>
             </div>
             <div class="mt-3">

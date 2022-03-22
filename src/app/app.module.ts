@@ -44,6 +44,18 @@ import { DefaultComponent } from './components/freelancer-panel/default/default.
 import { NgxStarRatingModule } from 'ngx-star-rating';
 import { AuthenticatedNavbarComponent } from './components/navi/authenticated-navbar/authenticated-navbar.component';
 import { UnauthenticatedNavbarComponent } from './components/navi/unauthenticated-navbar/unauthenticated-navbar.component';
+import { MessageComponent } from './components/message/message.component';
+import { MessageDetailComponent } from './components/message/message-detail/message-detail.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+import { OrderAddComponent } from './components/orders/order-add/order-add.component';
+import { PointControlPipe } from './pipes/point-control.pipe';
+import { MyOrdersComponent } from './components/orders/my-orders/my-orders.component';
+import { RestrictLengthPipe } from './pipes/restrict-length.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -85,6 +97,12 @@ export function tokenGetter() {
     DefaultComponent,
     AuthenticatedNavbarComponent,
     UnauthenticatedNavbarComponent,
+    MessageComponent,
+    MessageDetailComponent,
+    OrderAddComponent,
+    PointControlPipe,
+    MyOrdersComponent,
+    RestrictLengthPipe,
   ],
   imports: [
     BrowserModule,
@@ -100,6 +118,11 @@ export function tokenGetter() {
       },
     }),
     NgxStarRatingModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

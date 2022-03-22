@@ -11,7 +11,7 @@ export class DefaultComponent implements OnInit {
     { title: 'İlanlarım', icon: 'bi bi-card-list', url: 'my-adverts' },
     { title: 'Siparişlerim', icon: 'bi bi-box-seam', url: 'advert/add' },
     { title: 'Cüzdanım', icon: 'bi bi-wallet2', url: 'wallet' },
-    { title: 'Mesajlarım', icon: 'bi bi-envelope', url: 'advert/add' },
+    { title: 'Mesajlarım', icon: 'bi bi-envelope', url: 'messages' },
   ];
 
   constructor() {}

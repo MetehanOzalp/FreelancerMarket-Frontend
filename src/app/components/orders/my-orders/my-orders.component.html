@@ -1,0 +1,196 @@
+<div class="custom-container">
+  <div class="container">
+    <h1 class="title">Siparişlerim</h1>
+  </div>
+</div>
+<div class="container">
+  <ng-container *ngIf="!dataLoaded"
+    ><div
+      class="card mt-4 mb-4"
+      aria-hidden="true"
+      *ngFor="let index of [0, 1]"
+    >
+      <div class="card-header">
+        <div class="row">
+          <div class="col-2">
+            <h5 class="card-title placeholder-glow text-center">
+              <span class="placeholder col-6"></span>
+            </h5>
+            <p class="card-text placeholder-glow text-center">
+              <span class="placeholder col-2"></span>
+              <span class="placeholder col-2"></span>
+            </p>
+          </div>
+          <div class="col-2">
+            <h5 class="card-title placeholder-glow text-center">
+              <span class="placeholder col-6"></span>
+            </h5>
+            <p class="card-text placeholder-glow text-center">
+              <span class="placeholder col-2"></span>
+              <span class="placeholder col-2"></span>
+            </p>
+          </div>
+          <div class="col-2">
+            <h5 class="card-title placeholder-glow text-center">
+              <span class="placeholder col-6"></span>
+            </h5>
+            <p class="card-text placeholder-glow text-center">
+              <span class="placeholder col-2"></span>
+              <span class="placeholder col-2"></span>
+            </p>
+          </div>
+          <div class="col-2">
+            <h5 class="card-title placeholder-glow text-center">
+              <span class="placeholder col-6"></span>
+            </h5>
+            <p class="card-text placeholder-glow text-center">
+              <span class="placeholder col-2"></span>
+              <span class="placeholder col-2"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="row g-0">
+          <div class="col-auto ms-3">
+            <svg
+              class="bd-placeholder-img card-img-top rounded mx-auto d-block"
+              width="100%"
+              height="100%"
+              style="width: 150px; height: 150px; cursor: pointer"
+              xmlns="http://www.w3.org/2000/svg"
+              role="img"
+              aria-label="Placeholder"
+              preserveAspectRatio="xMidYMid slice"
+              focusable="false"
+            >
+              <rect width="100%" height="100%" fill="#868e96"></rect>
+            </svg>
+          </div>
+          <div class="col-6 ms-5">
+            <div class="row">
+              <h5 class="card-title placeholder-glow">
+                <span class="placeholder col-12"></span>
+              </h5>
+              <div class="col-12">
+                <p class="card-text placeholder-glow">
+                  <span class="placeholder col-5"></span>
+                  <span class="placeholder col-5"></span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col me-3">
+            <button
+              tabindex="-1"
+              class="btn btn-danger float-end disabled placeholder col-6"
+              style="width: 150px"
+            ></button>
+          </div>
+        </div>
+      </div></div
+  ></ng-container>
+
+  <!--  ************************************************************  -->
+  <ng-container *ngIf="dataLoaded"></ng-container>
+  <div class="card mt-4 mb-4" *ngFor="let order of orders">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-auto ms-5">
+          <span>Sipariş Tarihi</span>
+          <div class="col-auto text-muted text-center">
+            {{ order.createdDate | date: "dd/MM/yyyy" }}
+          </div>
+        </div>
+        <div class="col-auto ms-5">
+          Freelancer
+          <div
+            class="col-auto text-muted text-center"
+            style="cursor: pointer"
+            routerLink="/users/{{ order.advert.freelancer.userName }}"
+          >
+            {{ order.advert.freelancer.userName }}
+          </div>
+        </div>
+        <div class="col-auto ms-5">
+          Onay Durumu
+          <div class="col-auto text-muted text-center">
+            <i
+              class="bi bi-check2"
+              style="font-size: 1.5rem; color: #26ca9a"
+              (change)="(order.status)"
+              *ngIf="order.status"
+              ><span
+                style="
+                  font-style: normal;
+                  font-size: 16px;
+                  margin-left: 3px;
+                  margin-top: 6px;
+                "
+                >Onaylandı</span
+              ></i
+            >
+            <i
+              class="bi bi-x"
+              style="font-size: 1.5rem; color: #e83c5f"
+              (change)="(order.status)"
+              *ngIf="!order.status"
+              ><span
+                style="
+                  font-style: normal;
+                  font-size: 16px;
+                  margin-left: 3px;
+                  margin-top: 6px;
+                "
+                >Onaylanmadı</span
+              ></i
+            >
+          </div>
+        </div>
+        <div class="col-auto ms-5">
+          Tutar
+          <div class="col-auto text-muted text-center">
+            <b style="color: #201a3d">{{
+              order.advert.price | currency: "TRY":"₺":"1.1-1"
+            }}</b>
+          </div>
+        </div>
+        <div class="col-auto ms-5">
+          <b
+            style="color: #e83c5f; cursor: pointer"
+            routerLink="/messages/{{ order.advert.freelancer.userName }}"
+            >Freelancer' a mesaj at</b
+          >
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row g-0">
+        <div class="col-auto ms-3">
+          <img
+            src="{{ order.advert.imagePath }}"
+            style="width: 150px; height: 150px; cursor: pointer"
+            routerLink="/adverts/{{ order.advert.id }}"
+            class="card-img-top"
+            alt="..."
+          />
+        </div>
+        <div
+          class="col-auto ms-5"
+          style="cursor: pointer"
+          routerLink="/adverts/{{ order.advert.id }}"
+        >
+          <h5 class="card-title">{{ order.advert.title }}</h5>
+          <p class="card-text">
+            {{ order.advert.info | restrictLength }}
+          </p>
+        </div>
+        <div class="col me-3">
+          <a class="btn btn-danger float-end" (click)="confirm(order.id)"
+            >Siparişi Onayla</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
