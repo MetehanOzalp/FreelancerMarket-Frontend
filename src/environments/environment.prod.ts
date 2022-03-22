@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://freelancermarket-backend.herokuapp.com/api',
+  apiUrl: 'https://freelancermarket-backend.herokuapp.com/api',
   firebaseConfig: {
     apiKey: 'AIzaSyDuhmaenMb71D9HZ-xW7Gzi5qgsgGz2wr0',
     authDomain: 'pro3-92e17.firebaseapp.com',
