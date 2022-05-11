@@ -56,6 +56,8 @@ import { OrderAddComponent } from './components/orders/order-add/order-add.compo
 import { PointControlPipe } from './pipes/point-control.pipe';
 import { MyOrdersComponent } from './components/orders/my-orders/my-orders.component';
 import { RestrictLengthPipe } from './pipes/restrict-length.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { FreelancersOrdersComponent } from './components/freelancer-panel/freelancers-orders/freelancers-orders.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -103,6 +105,7 @@ export function tokenGetter() {
     PointControlPipe,
     MyOrdersComponent,
     RestrictLengthPipe,
+    FreelancersOrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +126,7 @@ export function tokenGetter() {
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    NgxPaginationModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

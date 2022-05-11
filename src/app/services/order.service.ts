@@ -35,4 +35,9 @@ export class OrderService {
     let newPath = this.apiUrl + '/getByUserName?userName=' + userName;
     return this.httpClient.get<ListResponseModel<Order>>(newPath);
   }
+
+  getByFreelancerUserName(userName: string): Observable<ListResponseModel<Order>> {
+    let newPath = this.apiUrl + '/getByFreelancerUserName?userName=' + userName;
+    return this.httpClient.get<ListResponseModel<Order>>(newPath);
+  }
 }

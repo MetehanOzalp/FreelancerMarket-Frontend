@@ -65,3 +65,7 @@
 .dropdown-item {
   cursor: pointer;
 }
+
+.dropdown-menu > li > a:active {
+  background-color: #e83c5f !important;
+}

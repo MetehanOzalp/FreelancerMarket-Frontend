@@ -126,7 +126,7 @@
             ></app-product-card>
           </div>
         </div>
-        <div class="card shadow mt-4 mb-3">
+        <div class="card shadow mt-4 mb-3" *ngIf="commentsLoaded">
           <div class="card-body">
             <h4 class="comments mt-3">Tüm Değerlendirmeler</h4>
           </div>
@@ -146,9 +146,15 @@
               ></i>
             </h6>
           </div>
-          <div class="card-body">
+          <div class="card-body" style="min-height: 775px">
             <div class="row">
-              <div class="card" *ngFor="let advertComment of advertComments">
+              <div
+                class="card"
+                *ngFor="
+                  let advertComment of advertComments
+                    | paginate: { itemsPerPage: 7, currentPage: commentPage }
+                "
+              >
                 <div
                   class="card-body"
                   style="
@@ -189,6 +195,15 @@
                   </div>
                   <hr />
                 </div>
+              </div>
+              <div class="paginator text-center">
+                <pagination-controls
+                  (pageChange)="commentPage = $event"
+                  previousLabel="Geri"
+                  nextLabel="İleri"
+                  class="my-pagination text-center"
+                  *ngIf="commentsLoaded"
+                ></pagination-controls>
               </div>
             </div>
           </div>

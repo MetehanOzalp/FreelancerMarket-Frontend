@@ -1,0 +1,31 @@
+.title {
+  font-size: 34px;
+  font-weight: 800;
+  color: #2d3640;
+}
+
+.spinner-border {
+  color: #e83c5f;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+.card-header {
+  background-color: #fafafa;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.card-footer {
+  border-radius: 0px 0px 10px 10px;
+}
+
+.btn {
+  border-radius: 10px;
+}
+
+.btn-danger {
+  border-color: #e83c5f;
+  background-color: #e83c5f;
+}

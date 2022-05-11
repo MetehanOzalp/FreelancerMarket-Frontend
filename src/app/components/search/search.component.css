@@ -172,3 +172,14 @@
 .spinner-border {
   color: #e83c5f;
 }
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: #e83c5f;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.paginator {
+  position: absolute;
+  bottom: 0px;
+}

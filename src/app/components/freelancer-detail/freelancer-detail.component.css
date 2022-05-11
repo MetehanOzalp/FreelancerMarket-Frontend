@@ -147,3 +147,12 @@ button:hover {
   float: left;
   margin-top: 10px;
 }
+
+.my-pagination ::ng-deep .ngx-pagination .current {
+  background: #e83c5f;
+}
+
+.paginator {
+  position: absolute;
+  bottom: 0px;
+}

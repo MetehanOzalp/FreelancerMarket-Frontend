@@ -38,14 +38,29 @@
 </div>
 
 <div class="container">
-  <h6 class="advert-count text-muted">{{ adverts.length }} iş ilanı bulundu</h6>
+  <h6 class="advert-count text-muted">{{ totalAdverts }} iş ilanı bulundu</h6>
   <div class="d-flex justify-content-center">
     <div class="spinner-border" role="status" *ngIf="!dataLoaded">
       <span class="visually-hidden">Loading...</span>
     </div>
   </div>
   <app-product-card
-    *ngFor="let advert of adverts"
+    *ngFor="
+      let advert of adverts
+        | paginate
+          : {
+              itemsPerPage: 12,
+              currentPage: filter.page,
+              totalItems: totalAdverts
+            }
+    "
     [advert]="advert"
   ></app-product-card>
+  <pagination-controls
+    (pageChange)="pageChange($event)"
+    previousLabel="Geri"
+    nextLabel="İleri"
+    class="my-pagination text-center"
+    *ngIf="dataLoaded"
+  ></pagination-controls>
 </div>

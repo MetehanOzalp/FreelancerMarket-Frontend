@@ -12,6 +12,7 @@ import { Advert } from 'src/app/models/advert';
 })
 export class SearchComponent implements OnInit {
   adverts: Advert[] = [];
+  totalAdverts: number = 0;
   subCategories: SubCategory[] = [];
   filter: AdvertSearchFilter = {};
   dataLoaded: Boolean = false;
@@ -28,6 +29,9 @@ export class SearchComponent implements OnInit {
     this.dataLoaded = false;
     this.activatedRoute.params.subscribe((params) => {
       if (params['filter']) {
+        this.adverts = [];
+        this.dataLoaded = false;
+        this.totalAdverts = 0;
         if (JSON.parse(params['filter']).term != this.filter.term) {
           this.subCategories = [];
         }
@@ -39,10 +43,14 @@ export class SearchComponent implements OnInit {
   }
 
   getByPageNumberAndSearchFilter() {
+    if (this.filter.page == undefined) {
+      this.filter.page = 1;
+    }
     this.advertService
-      .getByPageNumberAndSearchFilter(1, this.filter)
+      .getByPageNumberAndSearchFilter(this.filter)
       .subscribe((response) => {
         this.adverts = response.data;
+        this.totalAdverts = Number.parseInt(response.message);
         this.dataLoaded = true;
         if (!this.didCategoriesCome) {
           this.getCategoryOfJobAdverts();
@@ -73,6 +81,9 @@ export class SearchComponent implements OnInit {
       ) {
         this.filter.slug = undefined;
       }
+      this.filter.page = undefined;
+      this.adverts = [];
+      this.dataLoaded = false;
       this.router.navigate(['search/', JSON.stringify(this.filter)]);
     }
   }
@@ -93,5 +104,12 @@ export class SearchComponent implements OnInit {
       }
     }
     this.didCategoriesCome = true;
+  }
+
+  pageChange(event: any) {
+    this.filter.page = event;
+    this.adverts = [];
+    this.dataLoaded = false;
+    this.router.navigate(['search/', JSON.stringify(this.filter)]);
   }
 }

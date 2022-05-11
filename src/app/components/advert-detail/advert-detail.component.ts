@@ -25,6 +25,7 @@ export class AdvertDetailComponent implements OnInit {
   canComment: boolean = false;
   commentLoaded: boolean = false;
   userId: number;
+  commentPage: number = 1;
 
   constructor(
     private router: Router,
@@ -64,7 +65,9 @@ export class AdvertDetailComponent implements OnInit {
   getAdvertCommentsByAdvertId(id: number) {
     this.advertCommentService.getByAdvertId(id).subscribe(
       (response) => {
-        this.advertComments = response.data;
+        this.advertComments = response.data.sort(function (a, b) {
+          return <any>new Date(b.date) - <any>new Date(a.date);
+        });
         this.commentLoaded = true;
       },
       (responseError) => {

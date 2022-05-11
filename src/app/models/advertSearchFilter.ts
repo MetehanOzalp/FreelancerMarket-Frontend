@@ -3,4 +3,5 @@ export interface AdvertSearchFilter {
   slug?: number;
   minPrice?: number;
   maxPrice?: number;
+  page?: number;
 }

@@ -1,5 +1,4 @@
 import { ToastrService } from 'ngx-toastr';
-import { FreelancerDetailComponent } from './../freelancer-detail/freelancer-detail.component';
 import { SubCategoryService } from './../../services/sub-category.service';
 import { AdvertService } from './../../services/advert.service';
 import { AdvertFilter } from '../../models/advertFilter';
@@ -14,6 +13,7 @@ import { Advert } from 'src/app/models/advert';
 })
 export class SubCategoryComponent implements OnInit {
   adverts: Advert[] = [];
+  totalAdverts: number = 0;
   subCategoryName: string;
   filter: AdvertFilter = {};
   dataLoaded: Boolean = false;
@@ -24,12 +24,13 @@ export class SubCategoryComponent implements OnInit {
     private subCategoryService: SubCategoryService,
     private toastrService: ToastrService,
     private router: Router
-  ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  }
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
+      this.adverts = [];
+      this.dataLoaded = false;
+      this.totalAdverts = 0;
       this.subCategoryName = params['sub-category-name'].replace(/-/g, ' ');
       this.formatTheSubCategoryName();
       this.getNameOfSubCategory();
@@ -71,10 +72,14 @@ export class SubCategoryComponent implements OnInit {
   }
 
   getByPageNumberAndFilter() {
+    if (this.filter.page == undefined) {
+      this.filter.page = 1;
+    }
     this.advertService
-      .getByPageNumberAndFilter(1, this.subCategoryName, this.filter)
+      .getByPageNumberAndFilter(this.subCategoryName, this.filter)
       .subscribe((response) => {
         this.adverts = response.data;
+        this.totalAdverts = Number.parseInt(response.message);
         this.dataLoaded = true;
       });
   }
@@ -95,6 +100,9 @@ export class SubCategoryComponent implements OnInit {
       ) {
         this.filter.minPrice = undefined;
       }
+      this.filter.page = undefined;
+      this.adverts = [];
+      this.dataLoaded = false;
       this.router.navigate([
         'sub-categories/' +
           this.subCategoryName.replace(/ /g, '-').toLocaleLowerCase('tr-TR') +
@@ -111,5 +119,17 @@ export class SubCategoryComponent implements OnInit {
           this.subCategoryName.replace(/ /g, '-').toLocaleLowerCase('tr-TR'),
       ]);
     }
+  }
+
+  pageChange(event: any) {
+    this.filter.page = event;
+    this.adverts = [];
+    this.dataLoaded = false;
+    this.router.navigate([
+      'sub-categories/' +
+        this.subCategoryName.replace(/ /g, '-').toLocaleLowerCase('tr-TR') +
+        '/',
+      JSON.stringify(this.filter),
+    ]);
   }
 }

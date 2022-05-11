@@ -18,16 +18,19 @@ export class TopCategoryComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit(): void {
     this.dataLoaded = false;
     this.activatedRoute.params.subscribe((params) => {
+      console.log('geldi top category');
+      this.dataLoaded = false;
+      this.subCategories = [];
       this.topCategoryName = params['top-category-name'].replace(/-/g, ' ');
       this.formatTheTopCategoryName();
+      this.getSubCategoriesByTopCategoryName();
     });
-    this.getSubCategoriesByTopCategoryName();
   }
 
   formatTheTopCategoryName() {

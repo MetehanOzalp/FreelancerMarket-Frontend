@@ -9,7 +9,7 @@ export class DefaultComponent implements OnInit {
   tabs: any[] = [
     { title: 'İlan Ekle', icon: 'bi bi-plus-circle', url: 'advert/add' },
     { title: 'İlanlarım', icon: 'bi bi-card-list', url: 'my-adverts' },
-    { title: 'Siparişlerim', icon: 'bi bi-box-seam', url: 'advert/add' },
+    { title: 'Siparişlerim', icon: 'bi bi-box-seam', url: 'orders' },
     { title: 'Cüzdanım', icon: 'bi bi-wallet2', url: 'wallet' },
     { title: 'Mesajlarım', icon: 'bi bi-envelope', url: 'messages' },
   ];

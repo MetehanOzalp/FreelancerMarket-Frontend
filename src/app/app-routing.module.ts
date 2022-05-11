@@ -1,3 +1,4 @@
+import { FreelancersOrdersComponent } from './components/freelancer-panel/freelancers-orders/freelancers-orders.component';
 import { MyOrdersComponent } from './components/orders/my-orders/my-orders.component';
 import { MessageComponent } from './components/message/message.component';
 import { DefaultComponent } from './components/freelancer-panel/default/default.component';
@@ -164,6 +165,12 @@ const routes: Routes = [
         path: 'messages/:userName',
         pathMatch: 'full',
         component: MessageComponent,
+        canActivate: [LoginGuard, ExpiredTokenGuard],
+      },
+      {
+        path: 'orders',
+        pathMatch: 'full',
+        component: FreelancersOrdersComponent,
         canActivate: [LoginGuard, ExpiredTokenGuard],
       },
     ],

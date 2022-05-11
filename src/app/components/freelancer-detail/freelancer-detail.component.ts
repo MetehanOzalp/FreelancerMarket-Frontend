@@ -21,6 +21,8 @@ export class FreelancerDetailComponent implements OnInit {
   adverts: Advert[] = [];
   advertComments: AdvertComment[] = [];
   orders: Order[] = [];
+  commentPage: number = 1;
+  commentsLoaded: boolean = false;
 
   constructor(
     private router: Router,
@@ -57,7 +59,10 @@ export class FreelancerDetailComponent implements OnInit {
     this.advertCommentService
       .getByFreelancerId(freelancerId)
       .subscribe((response) => {
-        this.advertComments = response.data;
+        this.advertComments = response.data.sort(function (a, b) {
+          return <any>new Date(b.date) - <any>new Date(a.date);
+        });
+        this.commentsLoaded = true;
       });
   }
 

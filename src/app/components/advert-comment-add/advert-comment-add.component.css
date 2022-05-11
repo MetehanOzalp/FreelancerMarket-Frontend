@@ -1,9 +1,12 @@
 .card {
   border-radius: 10px;
   border: none;
-}
-.card {
   font-weight: 500;
+}
+
+.comments {
+  font-weight: bolder;
+  font-size: 24px;
 }
 
 .form-control,

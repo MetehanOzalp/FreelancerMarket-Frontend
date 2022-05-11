@@ -62,24 +62,20 @@ export class AdvertService {
   }
 
   getByPageNumberAndFilter(
-    pageNumber: number,
     subCategoryName: string,
     filter: AdvertFilter
   ): Observable<ListResponseModel<Advert>> {
     let newPath =
       this.apiUrl +
-      '/getByFilter?pageNumber=' +
-      pageNumber +
-      '&subCategoryName=' +
+      '/getByFilter?subCategoryName=' +
       encodeURIComponent(subCategoryName);
     return this.httpClient.post<ListResponseModel<Advert>>(newPath, filter);
   }
 
   getByPageNumberAndSearchFilter(
-    pageNumber: number,
     filter: AdvertSearchFilter
   ): Observable<ListResponseModel<Advert>> {
-    let newPath = this.apiUrl + '/getBySearchFilter?pageNumber=' + pageNumber;
+    let newPath = this.apiUrl + '/getBySearchFilter';
     return this.httpClient.post<ListResponseModel<Advert>>(newPath, filter);
   }
 }
