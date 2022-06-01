@@ -42,15 +42,39 @@ export class MessageComponent implements OnInit {
         };
       });
       this.dataLoaded = true;
+      if (this.selectedUserName) {
+        var isThere = false;
+        this.messages.forEach((element) => {
+          if (element.id == this.selectedUserName) {
+            isThere = true;
+          }
+        });
+        if (!isThere) {
+          this.messages.unshift({ id: this.selectedUserName });
+        }
+      }
     });
   }
 
   selectUserName(userName: any) {
     this.selectedUserName = userName;
-    this.router
-      .navigateByUrl('/messages', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['/messages/' + this.selectedUserName]);
-      });
+    var url = this.router.url;
+    if (url.includes('/freelancer/panel/messages')) {
+      this.router
+        .navigateByUrl('/freelancer/panel/messages', {
+          skipLocationChange: true,
+        })
+        .then(() => {
+          this.router.navigate([
+            '/freelancer/panel/messages/' + this.selectedUserName,
+          ]);
+        });
+    } else {
+      this.router
+        .navigateByUrl('/messages', { skipLocationChange: true })
+        .then(() => {
+          this.router.navigate(['/messages/' + this.selectedUserName]);
+        });
+    }
   }
 }

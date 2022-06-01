@@ -58,6 +58,10 @@ import { MyOrdersComponent } from './components/orders/my-orders/my-orders.compo
 import { RestrictLengthPipe } from './pipes/restrict-length.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FreelancersOrdersComponent } from './components/freelancer-panel/freelancers-orders/freelancers-orders.component';
+import { AdvertCommentResponseAddComponent } from './components/advert-comment-response-add/advert-comment-response-add.component';
+import { FreelancerSkillComponent } from './components/profile/freelancer-profile/freelancer-skill/freelancer-skill.component';
+import { FreelancerCommentsComponent } from './components/freelancer-panel/freelancer-comments/freelancer-comments.component';
+import { FullScreenLoadingOverlayComponent } from './components/full-screen-loading-overlay/full-screen-loading-overlay.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -106,6 +110,10 @@ export function tokenGetter() {
     MyOrdersComponent,
     RestrictLengthPipe,
     FreelancersOrdersComponent,
+    AdvertCommentResponseAddComponent,
+    FreelancerSkillComponent,
+    FreelancerCommentsComponent,
+    FullScreenLoadingOverlayComponent,
   ],
   imports: [
     BrowserModule,

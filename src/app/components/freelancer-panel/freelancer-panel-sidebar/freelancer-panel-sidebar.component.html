@@ -1,4 +1,4 @@
-<div class="container" style="position: fixed;width: 15%;">
+<div class="container" style="position: fixed; width: 15%">
   <div
     class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column"
     id="sidebar"
@@ -15,20 +15,41 @@
       </a>
     </div>
     <ul class="nav flex-column text-white w-100">
-      <li routerLink="advert/add" class="nav-link text-white">
+      <li
+        routerLink="advert/add"
+        class="nav-link text-white {{ isActiveMenu('advert/add') }}"
+      >
         <a><i class="bi bi-plus-circle"></i>İlan Ekle</a>
       </li>
-      <li routerLink="my-adverts" class="nav-link text-white">
+      <li
+        routerLink="my-adverts"
+        class="nav-link text-white {{ isActiveMenu('my-adverts') }}"
+      >
         <a><i class="bi bi-card-list"></i>İlanlarım</a>
       </li>
-      <li routerLink="orders" class="nav-link text-white">
+      <li
+        routerLink="orders"
+        class="nav-link text-white {{ isActiveMenu('orders') }}"
+      >
         <a><i class="bi bi-box-seam"></i>Siparişlerim</a>
       </li>
-      <li routerLink="wallet" class="nav-link text-white">
+      <li
+        routerLink="wallet"
+        class="nav-link text-white {{ isActiveMenu('wallet') }}"
+      >
         <a><i class="bi bi-wallet2"></i>Cüzdanım</a>
       </li>
-      <li routerLink="messages" class="nav-link text-white">
+      <li
+        routerLink="messages"
+        class="nav-link text-white {{ isActiveMenu('messages') }}"
+      >
         <a> <i class="bi bi-envelope"></i>Mesajlarım </a>
+      </li>
+      <li
+        routerLink="comments"
+        class="nav-link text-white {{ isActiveMenu('comments') }}"
+      >
+        <a> <i class="bi bi-text-center"></i>Yorumlarım </a>
       </li>
     </ul>
   </div>

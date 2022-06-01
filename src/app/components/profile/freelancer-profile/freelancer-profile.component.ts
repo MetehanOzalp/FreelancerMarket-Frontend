@@ -1,5 +1,4 @@
 import { HttpEvent, HttpEventType } from '@angular/common/http';
-import { timer } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { FreelancerService } from 'src/app/services/freelancer.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -23,8 +22,8 @@ export class FreelancerProfileComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private freelancerService: FreelancerService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private freelancerService: FreelancerService
   ) {}
 
   ngOnInit(): void {

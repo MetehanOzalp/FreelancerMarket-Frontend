@@ -20,6 +20,7 @@ export class AdvertDetailComponent implements OnInit {
   advert: Advert = {};
   adverts: Advert[] = [];
   advertComments: AdvertComment[] = [];
+  selectedComment: AdvertComment;
   orders: Order[] = [];
   dataLoaded: boolean = false;
   canComment: boolean = false;
@@ -41,6 +42,7 @@ export class AdvertDetailComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id'] && Number.parseInt(params['id'])) {
+        this.getUserInfo();
         this.getByAdvertId(params['id']);
       }
     });
@@ -96,7 +98,7 @@ export class AdvertDetailComponent implements OnInit {
     );
   }
 
-  canCommentCheck() {
+  getUserInfo() {
     if (localStorage.getItem('token')) {
       this.userService
         .getByUserName(
@@ -104,15 +106,35 @@ export class AdvertDetailComponent implements OnInit {
         )
         .subscribe((response) => {
           this.userId = response.data.id;
-          this.orders.forEach((element) => {
-            if (
-              element.userId == this.userId &&
-              element.advertId == this.advert.id
-            ) {
-              this.canComment = true;
-            }
-          });
         });
+    }
+  }
+
+  canCommentCheck() {
+    if (localStorage.getItem('token')) {
+      this.orders.forEach((element) => {
+        if (
+          element.userId == this.userId &&
+          element.advertId == this.advert.id
+        ) {
+          this.canComment = true;
+        }
+      });
+    }
+  }
+
+  canCommentResponseCheck(comment: AdvertComment) {
+    if (localStorage.getItem('token')) {
+      if (
+        this.userId == this.advert.freelancerId ||
+        this.userId == comment.userId
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
   }
 
@@ -161,5 +183,9 @@ export class AdvertDetailComponent implements OnInit {
 
   sendMessage(userName: string) {
     this.router.navigate(['/messages/' + userName]);
+  }
+
+  selectComment(comment: AdvertComment) {
+    this.selectedComment = comment;
   }
 }

@@ -1,3 +1,4 @@
+import { AdvertCommentResponse } from './advertCommentResponse';
 import { User } from './user';
 export interface AdvertComment {
   id: number;
@@ -7,4 +8,5 @@ export interface AdvertComment {
   score: number;
   date: Date;
   user: User;
+  advertCommentResponses?: AdvertCommentResponse[];
 }

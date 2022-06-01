@@ -1,0 +1,92 @@
+<div class="card shadow mb-5">
+  <div class="card-header">Yeteneklerim</div>
+  <div class="card-body">
+    <div class="mt-2 about-section">
+      <div class="skills-container bd-grid">
+        <div
+          *ngFor="let skill of freelancer.skills"
+          class="skills-data"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          style="cursor: pointer"
+          (click)="selectSkill(skill)"
+        >
+          <div class="skills-names">
+            <span class="skills-name">{{ skill.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+      *ngIf="selectedSkill"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Yeteneği Sil</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span style="color: #e83c5f">{{ selectedSkill.name }}</span> isimli
+            yeteneği silmek istediğinize emin misiniz?
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Vazgeç
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              data-bs-dismiss="modal"
+              (click)="deleteSkill(selectedSkill.id)"
+            >
+              Sil
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="mt-4" />
+    <form [formGroup]="skillAddForm">
+      <div class="row gx-3 mb-3 ms-5">
+        <div class="col-md-8">
+          <div class="input-group">
+            <input
+              class="input-group__input"
+              id="inputSkill"
+              type="text"
+              formControlName="name"
+              placeholder="&nbsp;"
+            />
+            <label class="input-group__label" for="inputSkill">Yetenek</label>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <button
+            class="btn btn-primary"
+            type="button"
+            [disabled]="!skillAddForm.valid"
+            (click)="addSkill()"
+          >
+            Ekle
+          </button>
+        </div>
+      </div>
+    </form>
+    <hr class="mt-4" />
+  </div>
+</div>

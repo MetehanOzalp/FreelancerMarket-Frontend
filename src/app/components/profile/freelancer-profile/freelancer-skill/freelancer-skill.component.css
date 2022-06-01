@@ -1,0 +1,128 @@
+.card {
+  border-radius: 10px;
+  border: none;
+}
+.card .card-header {
+  font-weight: 500;
+}
+.card-header:first-child {
+  border-radius: 10px 10px 0 0;
+  margin-bottom: 20px;
+}
+.card-header {
+  padding: 1rem 1.35rem;
+  margin-bottom: 0;
+  color: #fff;
+  background-color: #e83c5f;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+}
+
+.input-group {
+  position: relative;
+}
+.input-group__label {
+  display: block;
+  position: absolute;
+  top: 0;
+  line-height: 40px;
+  color: #aaa;
+  left: 10px;
+  padding: 0 5px;
+  transition: line-height 200ms ease-in-out, font-size 200ms ease-in-out,
+    top 200ms ease-in-out;
+  pointer-events: none;
+}
+.input-group__input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 2px;
+  border: 1px solid #dddddd;
+  border-radius: 10px !important;
+  padding: 0 10px;
+}
+.input-group__input:not(:placeholder-shown) + label,
+.input-group__input:focus + label {
+  background-color: white;
+  line-height: 10px;
+  opacity: 1;
+  font-size: 10px;
+  font-size: 15px;
+  top: -5px;
+}
+.input-group__input:not(:placeholder-shown) + label {
+  background-color: white;
+  line-height: 10px;
+  opacity: 1;
+  font-size: 10px;
+  font-size: 15px;
+  top: -5px;
+}
+.input-group__input:focus,
+.input-group__input:not(:placeholder-shown) {
+  outline: none;
+  border: 1px solid #2d3640;
+}
+.input-group__input:focus + label,
+.input-group__input:not(:placeholder-shown) + label {
+  font-size: 15px;
+  color: #201a3d;
+}
+
+.input-group {
+  width: 100%;
+  margin-bottom: 10px;
+  width: 100% !important;
+  margin-bottom: 20px;
+  display: block !important;
+}
+
+.btn-primary {
+  background-color: #201a3d;
+  border: none;
+  border-radius: 10px;
+}
+
+.about-section {
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #8b95a1;
+}
+
+.skill {
+  margin-left: 15px;
+  color: #2d3640;
+}
+
+.skills-container {
+  row-gap: 2rem;
+  text-align: center;
+}
+
+.skills-data {
+  display: inline-block;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 12px 7px;
+  margin: 0 10px 10px 0;
+  border-radius: 4px;
+  border: 1px solid #8b95a1;
+}
+
+.skills-name {
+  display: flex;
+  align-items: center;
+}
+
+.btn-success {
+  border-color: #26ca9a;
+  background-color: #26ca9a;
+}
+
+.btn-danger {
+  border-color: #e83c5f;
+  background-color: #e83c5f;
+}

@@ -147,53 +147,125 @@
             *ngIf="advertComments.length != 0"
           >
             <div class="row">
-              <div
-                class="card"
-                *ngFor="
-                  let advertComment of advertComments
-                    | paginate: { itemsPerPage: 7, currentPage: commentPage }
-                "
-              >
+              <div class="mb-3">
                 <div
-                  class="card-body"
-                  style="
-                    padding-top: 0.25rem !important;
-                    padding-bottom: 0.25rem !important;
+                  class="card"
+                  *ngFor="
+                    let advertComment of advertComments
+                      | paginate: { itemsPerPage: 7, currentPage: commentPage }
                   "
                 >
-                  <div class="d-flex flex-start">
-                    <img
-                      class="rounded-circle shadow-1-strong me-3"
-                      src="{{ advertComment.user.imagePath }}"
-                      alt="avatar"
-                      width="54.65"
-                      height="50"
-                    />
-                    <div class="w-100">
-                      <div
-                        class="d-flex justify-content-between align-items-center"
-                      >
-                        <h6 class="commenter fw-bold mb-0">
-                          {{ advertComment.user.userName }}
-                          <i class="bi bi-star-fill text-warning me-2"
-                            ><span
-                              style="font-style: normal; margin-left: 5px"
-                              >{{ advertComment.score | number: "1.1-1" }}</span
-                            ></i
-                          >
-                          <br />
-                          <span class="comment-content">{{
-                            advertComment.content
-                          }}</span>
-                        </h6>
-                        <p class="day-ago mb-0">
-                          {{ advertComment.date | dateAgo }}
-                        </p>
+                  <div
+                    class="card-body"
+                    style="
+                      padding-top: 0.25rem !important;
+                      padding-bottom: 0.25rem !important;
+                    "
+                  >
+                    <div class="d-flex flex-start">
+                      <img
+                        class="rounded-circle shadow-1-strong me-3"
+                        src="{{ advertComment.user.imagePath }}"
+                        alt="avatar"
+                        width="54.65"
+                        height="50"
+                      />
+                      <div class="w-100">
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <h6 class="commenter fw-bold mb-0">
+                            {{ advertComment.user.userName }}
+                            <i class="bi bi-star-fill text-warning me-2"
+                              ><span
+                                style="font-style: normal; margin-left: 5px"
+                                >{{
+                                  advertComment.score | number: "1.1-1"
+                                }}</span
+                              ></i
+                            >
+                            <br />
+                            <span class="comment-content">{{
+                              advertComment.content
+                            }}</span>
+                          </h6>
+                          <p *ngIf="canCommentResponseCheck(advertComment)">
+                            <button
+                              type=""
+                              class="edit-remove"
+                              data-bs-toggle="modal"
+                              data-bs-target="#exampleModal"
+                              (click)="selectComment(advertComment)"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="32"
+                                height="32"
+                                fill="currentColor"
+                                class="bi bi-reply-fill"
+                                viewBox="0 0 16 16"
+                              >
+                                <path
+                                  d="M5.921 11.9 1.353 8.62a.719.719 0 0 1 0-1.238L5.921 4.1A.716.716 0 0 1 7 4.719V6c1.5 0 6 0 7 8-2.5-4.5-7-4-7-4v1.281c0 .56-.606.898-1.079.62z"
+                                />
+                              </svg>
+                            </button>
+                            <app-advert-comment-response-add
+                              [selectedComment]="selectedComment"
+                              [userId]="userId"
+                            >
+                            </app-advert-comment-response-add>
+                          </p>
+                          <p class="day-ago mb-0">
+                            {{ advertComment.date | dateAgo }}
+                          </p>
+                        </div>
                       </div>
                     </div>
+                    <ng-container
+                      *ngIf="advertComment.advertCommentResponses.length != 0"
+                      ><div
+                        class="d-flex flex-end ms-5 mt-3"
+                        *ngFor="
+                          let response of advertComment.advertCommentResponses
+                        "
+                      >
+                        <img
+                          class="rounded-circle shadow-1-strong me-3"
+                          src="{{ response.user.imagePath }}"
+                          alt="avatar"
+                          width="54.65"
+                          height="50"
+                        />
+                        <div class="w-100">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <h6 class="commenter fw-bold mb-0">
+                              {{ response.user.userName }}
+                              <!-- <i class="bi bi-star-fill text-warning me-2"
+                              ><span
+                                style="font-style: normal; margin-left: 5px"
+                                >{{
+                                  advertComment.score | number: "1.1-1"
+                                }}</span
+                              ></i
+                            > -->
+                              <br />
+                              <span class="comment-content">{{
+                                response.content
+                              }}</span>
+                            </h6>
+                            <p class="day-ago mb-0">
+                              {{ response.date | dateAgo }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
                   </div>
+                  <hr />
                 </div>
-                <hr />
               </div>
               <div class="paginator text-center">
                 <pagination-controls
@@ -243,7 +315,7 @@
                     </p>
                     <button
                       tabindex="-1"
-                      class="disabled placeholder col-6"
+                      class="button disabled placeholder col-6"
                       style="width: 150px"
                     ></button>
                   </div>
@@ -293,7 +365,10 @@
                       {{ advert.freelancer.averageScore | number: "1.1-1" }}
                       <i class="bi bi-star-fill" style="font-size: 20px"></i>
                     </h6>
-                    <button (click)="sendMessage(advert.freelancer.userName)">
+                    <button
+                      class="button"
+                      (click)="sendMessage(advert.freelancer.userName)"
+                    >
                       Mesaj Gönder
                     </button>
                   </div>
@@ -340,7 +415,7 @@
               <div class="card-body" style="padding: 50px">
                 <button
                   tabindex="-1"
-                  class="order-button disabled placeholder col-6"
+                  class="button order-button disabled placeholder col-6"
                 ></button>
               </div>
             </div>
@@ -349,7 +424,7 @@
             <div class="card shadow">
               <div class="card-body" style="padding: 50px">
                 <button
-                  class="order-button"
+                  class="button order-button"
                   data-bs-toggle="modal"
                   data-bs-target="#orderAdd"
                 >

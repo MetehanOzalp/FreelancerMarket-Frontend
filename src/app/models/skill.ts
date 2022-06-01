@@ -1,5 +1,5 @@
 export interface Skill {
-  id: number;
-  freelancerId: number;
-  name: string;
+  id?: number;
+  freelancerId?: number;
+  name?: string;
 }

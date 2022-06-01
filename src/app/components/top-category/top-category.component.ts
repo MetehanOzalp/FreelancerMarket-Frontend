@@ -24,7 +24,6 @@ export class TopCategoryComponent implements OnInit {
   ngOnInit(): void {
     this.dataLoaded = false;
     this.activatedRoute.params.subscribe((params) => {
-      console.log('geldi top category');
       this.dataLoaded = false;
       this.subCategories = [];
       this.topCategoryName = params['top-category-name'].replace(/-/g, ' ');

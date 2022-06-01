@@ -45,12 +45,14 @@ export class OrderAddComponent implements OnInit {
   }
 
   getUser() {
-    this.userService
-      .getByUserName(
-        this.jwtHelperService.decodeToken(localStorage.getItem('token')).sub
-      )
-      .subscribe((response) => {
-        this.user = response.data;
-      });
+    if (localStorage.getItem('token')) {
+      this.userService
+        .getByUserName(
+          this.jwtHelperService.decodeToken(localStorage.getItem('token')).sub
+        )
+        .subscribe((response) => {
+          this.user = response.data;
+        });
+    }
   }
 }

@@ -20,7 +20,7 @@ export class AdvertCommentService {
   }
 
   getByAdvertId(id: number): Observable<ListResponseModel<AdvertComment>> {
-    let newPath = this.apiUrl + '/getByAdvertId?advertCommentId=' + id;
+    let newPath = this.apiUrl + '/getByAdvertId?advertId=' + id;
     return this.httpClient.get<ListResponseModel<AdvertComment>>(newPath);
   }
 

@@ -81,31 +81,12 @@
             <h5 class="skill">Uzman Olduğu Alanlar & Araçlar</h5>
             <div class="mt-4 about-section">
               <div class="skills-container bd-grid">
-                <div>
-                  <div class="skills-data">
-                    <div class="skills-names">
-                      <span class="skills-name">Yetenek 1</span>
-                    </div>
-                  </div>
-                  <div class="skills-data">
-                    <div class="skills-names">
-                      <span class="skills-name">Yetenek 2</span>
-                    </div>
-                  </div>
-                  <div class="skills-data">
-                    <div class="skills-names">
-                      <span class="skills-name">Yetenek 3</span>
-                    </div>
-                  </div>
-                  <div class="skills-data">
-                    <div class="skills-names">
-                      <span class="skills-name">Yetenek 4</span>
-                    </div>
-                  </div>
-                  <div class="skills-data">
-                    <div class="skills-names">
-                      <span class="skills-name">Yetenek 5</span>
-                    </div>
+                <div
+                  class="skills-data"
+                  *ngFor="let skill of freelancer.skills"
+                >
+                  <div class="skills-names">
+                    <span class="skills-name">{{ skill.name }}</span>
                   </div>
                 </div>
               </div>
@@ -148,52 +129,97 @@
           </div>
           <div class="card-body" style="min-height: 775px">
             <div class="row">
-              <div
-                class="card"
-                *ngFor="
-                  let advertComment of advertComments
-                    | paginate: { itemsPerPage: 7, currentPage: commentPage }
-                "
-              >
+              <div class="mb-3">
                 <div
-                  class="card-body"
-                  style="
-                    padding-top: 0.25rem !important;
-                    padding-bottom: 0.25rem !important;
+                  class="card"
+                  *ngFor="
+                    let advertComment of advertComments
+                      | paginate: { itemsPerPage: 7, currentPage: commentPage }
                   "
                 >
-                  <div class="d-flex flex-start">
-                    <img
-                      class="rounded-circle shadow-1-strong me-3"
-                      src="{{ advertComment.user.imagePath }}"
-                      alt="avatar"
-                      width="54.65"
-                      height="50"
-                    />
-                    <div class="w-100">
-                      <div
-                        class="d-flex justify-content-between align-items-center"
-                      >
-                        <h6 class="commenter fw-bold mb-0">
-                          {{ advertComment.user.userName }}
-                          <i class="bi bi-star-fill text-warning me-2"
-                            ><span
-                              style="font-style: normal; margin-left: 5px"
-                              >{{ advertComment.score | number: "1.1-1" }}</span
-                            ></i
-                          >
-                          <br />
-                          <span class="comment-content">{{
-                            advertComment.content
-                          }}</span>
-                        </h6>
-                        <p class="day-ago mb-0">
-                          {{ advertComment.date | dateAgo }}
-                        </p>
+                  <div
+                    class="card-body"
+                    style="
+                      padding-top: 0.25rem !important;
+                      padding-bottom: 0.25rem !important;
+                    "
+                  >
+                    <div class="d-flex flex-start">
+                      <img
+                        class="rounded-circle shadow-1-strong me-3"
+                        src="{{ advertComment.user.imagePath }}"
+                        alt="avatar"
+                        width="54.65"
+                        height="50"
+                      />
+                      <div class="w-100">
+                        <div
+                          class="d-flex justify-content-between align-items-center"
+                        >
+                          <h6 class="commenter fw-bold mb-0">
+                            {{ advertComment.user.userName }}
+                            <i class="bi bi-star-fill text-warning me-2"
+                              ><span
+                                style="font-style: normal; margin-left: 5px"
+                                >{{
+                                  advertComment.score | number: "1.1-1"
+                                }}</span
+                              ></i
+                            >
+                            <br />
+                            <span class="comment-content">{{
+                              advertComment.content
+                            }}</span>
+                          </h6>
+                          <p class="day-ago mb-0">
+                            {{ advertComment.date | dateAgo }}
+                          </p>
+                        </div>
                       </div>
                     </div>
+                    <ng-container
+                      *ngIf="advertComment.advertCommentResponses.length != 0"
+                      ><div
+                        class="d-flex flex-end ms-5 mt-3"
+                        *ngFor="
+                          let response of advertComment.advertCommentResponses
+                        "
+                      >
+                        <img
+                          class="rounded-circle shadow-1-strong me-3"
+                          src="{{ response.user.imagePath }}"
+                          alt="avatar"
+                          width="54.65"
+                          height="50"
+                        />
+                        <div class="w-100">
+                          <div
+                            class="d-flex justify-content-between align-items-center"
+                          >
+                            <h6 class="commenter fw-bold mb-0">
+                              {{ response.user.userName }}
+                              <!-- <i class="bi bi-star-fill text-warning me-2"
+                              ><span
+                                style="font-style: normal; margin-left: 5px"
+                                >{{
+                                  advertComment.score | number: "1.1-1"
+                                }}</span
+                              ></i
+                            > -->
+                              <br />
+                              <span class="comment-content">{{
+                                response.content
+                              }}</span>
+                            </h6>
+                            <p class="day-ago mb-0">
+                              {{ response.date | dateAgo }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                    <hr />
                   </div>
-                  <hr />
                 </div>
               </div>
               <div class="paginator text-center">

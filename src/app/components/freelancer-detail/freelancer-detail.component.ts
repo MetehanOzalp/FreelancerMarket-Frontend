@@ -73,14 +73,18 @@ export class FreelancerDetailComponent implements OnInit {
   }
 
   getLastCompletedOrderDate() {
+    let lastOrder = this.orders[0];
     if (this.orders.length != 0) {
       for (let index = 0; index < this.orders.length; index++) {
-        if (this.orders[index].status) {
-          return this.orders[index].createdDate;
+        if (
+          this.orders[index].status &&
+          this.orders[index].createdDate > lastOrder.createdDate
+        ) {
+          lastOrder = this.orders[index];
         }
       }
     }
-    return null;
+    return lastOrder.createdDate;
   }
 
   getCreatedDate(date: Date) {

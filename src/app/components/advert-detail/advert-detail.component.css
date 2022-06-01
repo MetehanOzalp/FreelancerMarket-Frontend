@@ -80,7 +80,7 @@
   margin-top: 10px;
 }
 
-button {
+.button {
   cursor: pointer;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -96,7 +96,7 @@ button {
   transition: 200ms background-color ease-in-out;
 }
 
-button:hover {
+.button:hover {
   background-color: #e83c5f;
 }
 
@@ -149,4 +149,10 @@ button:hover {
 .paginator {
   position: absolute;
   bottom: 0px;
+}
+
+.edit-remove {
+  border: none;
+  background-color: transparent;
+  color: #e83c5f;
 }
