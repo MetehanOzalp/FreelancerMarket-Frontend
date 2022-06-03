@@ -62,6 +62,7 @@ import { AdvertCommentResponseAddComponent } from './components/advert-comment-r
 import { FreelancerSkillComponent } from './components/profile/freelancer-profile/freelancer-skill/freelancer-skill.component';
 import { FreelancerCommentsComponent } from './components/freelancer-panel/freelancer-comments/freelancer-comments.component';
 import { FullScreenLoadingOverlayComponent } from './components/full-screen-loading-overlay/full-screen-loading-overlay.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -114,6 +115,7 @@ export function tokenGetter() {
     FreelancerSkillComponent,
     FreelancerCommentsComponent,
     FullScreenLoadingOverlayComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

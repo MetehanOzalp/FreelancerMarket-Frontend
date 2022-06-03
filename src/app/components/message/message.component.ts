@@ -14,6 +14,7 @@ export class MessageComponent implements OnInit {
   selectedUserName: string;
   messages: Array<any>;
   dataLoaded: boolean = false;
+  filterText: string = '';
 
   constructor(
     private router: Router,

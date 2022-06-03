@@ -54,13 +54,18 @@
             style="cursor: pointer"
           >
             <img
+              *ngIf="user.imagePath"
               src="{{ user.imagePath }}"
               alt=""
               width="50"
               height="50"
               class="rounded-circle"
               style="margin-right: 5px"
-            />{{ user.name }} {{ user.surName }}
+            />
+            <div class="spinner-border" role="status" *ngIf="!user.imagePath">
+              <span class="visually-hidden"></span>
+            </div>
+            {{ user.name }} {{ user.surName }}
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" routerLink="/profile">Profilim</a></li>

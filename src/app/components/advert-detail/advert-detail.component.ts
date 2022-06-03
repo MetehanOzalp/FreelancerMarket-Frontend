@@ -9,12 +9,13 @@ import { ToastrService } from 'ngx-toastr';
 import { Advert } from 'src/app/models/advert';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdvertService } from './../../services/advert.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-advert-detail',
   templateUrl: './advert-detail.component.html',
   styleUrls: ['./advert-detail.component.css'],
+  providers: [{ provide: Window, useValue: window }],
 })
 export class AdvertDetailComponent implements OnInit {
   advert: Advert = {};
@@ -36,8 +37,11 @@ export class AdvertDetailComponent implements OnInit {
     private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute,
     private jwtHelperService: JwtHelperService,
-    private advertCommentService: AdvertCommentService
-  ) {}
+    private advertCommentService: AdvertCommentService,
+    @Inject(Window) private window: Window
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
@@ -187,5 +191,9 @@ export class AdvertDetailComponent implements OnInit {
 
   selectComment(comment: AdvertComment) {
     this.selectedComment = comment;
+  }
+
+  onEdit() {
+    this.window.document.getElementById('comments').scrollIntoView();
   }
 }
