@@ -22,9 +22,12 @@
         *ngIf="message.from == receiver"
       >
         <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-          alt="avatar 1"
-          style="width: 45px; height: 100%"
+          src="{{ getUserImage(message.from) }}"
+          *ngIf="imageLoaded"
+          alt="{{ message.from }}"
+          class="rounded-circle"
+          width="50"
+          height="50"
         />
         <div>
           <p
@@ -51,21 +54,26 @@
           </p>
         </div>
         <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-          alt="avatar 1"
-          style="width: 45px; height: 100%"
+          *ngIf="imageLoaded"
+          src="{{ getUserImage(message.from) }}"
+          alt="{{ message.from }}"
+          class="rounded-circle"
+          width="50"
+          height="50"
         />
       </div>
     </ng-container>
   </div>
-
   <div
     class="text-muted d-flex justify-content-start align-items-center pe-3 pt-3 mt-2 content"
   >
     <img
-      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava6-bg.webp"
-      alt="avatar 3"
-      style="width: 40px; height: 100%"
+      *ngIf="imageLoaded"
+      src="{{ getUserImage(sender) }}"
+      alt="{{ sender }}"
+      class="rounded-circle me-2"
+      width="50"
+      height="50"
     />
     <input
       type="text"
@@ -75,6 +83,8 @@
       [(ngModel)]="message"
       placeholder="Mesaj Yaz"
     />
-    <a class="ms-1" (click)="sendMessage()"><i class="bi bi-send-fill"></i></a>
+    <a class="ms-1" (click)="sendMessage()" style="cursor: pointer"
+      ><i class="bi bi-send-fill" style="font-size: 1.5rem; color: #201a3d"></i
+    ></a>
   </div>
 </ng-container>

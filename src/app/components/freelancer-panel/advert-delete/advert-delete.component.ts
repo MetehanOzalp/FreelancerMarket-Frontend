@@ -1,8 +1,7 @@
-import { timer } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { AdvertService } from './../../../services/advert.service';
 import { Advert } from './../../../models/advert';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-advert-delete',
@@ -11,6 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class AdvertDeleteComponent implements OnInit {
   @Input() advert: Advert;
+  @Output() deletedId = new EventEmitter<number>();
 
   constructor(
     private advertService: AdvertService,
@@ -23,10 +23,8 @@ export class AdvertDeleteComponent implements OnInit {
     if (this.advert.id) {
       this.advertService.delete(this.advert.id).subscribe(
         (response) => {
+          this.deletedId.emit(this.advert.id);
           this.toastrService.success(response.message, 'Başarılı');
-          timer(300).subscribe((p) => {
-            window.location.reload();
-          });
         },
         (responseError) => {
           this.toastrService.error(responseError.error.message, 'Hata');

@@ -44,4 +44,8 @@ export class MyAdvertsComponent implements OnInit {
         }
       );
   }
+
+  deleteAdvert(event: any) {
+    this.adverts = this.adverts.filter((x) => x.id != event);
+  }
 }

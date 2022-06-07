@@ -1,3 +1,4 @@
+import { UserService } from './../../../services/user.service';
 import { MessageService } from './../../../services/message.service';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -11,14 +12,29 @@ export class MessageDetailComponent implements OnInit {
   @Input() receiver: string;
   messages: Array<any>;
   dataLoaded: boolean = false;
+  userImages: Array<any> = [];
   message: string;
+  imageLoaded: boolean = false;
+  userNames: string[] = [];
 
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
+    this.messages = [];
+    this.userNames = [];
     if (this.sender && this.receiver) {
+      this.userNames.push(this.sender, this.receiver);
+      this.getUserImages();
       this.getMessageDetails();
     }
+  }
+
+  ngOnChanges() {
+    this.dataLoaded = false;
+    this.ngOnInit();
   }
 
   getMessageDetails() {
@@ -36,6 +52,38 @@ export class MessageDetailComponent implements OnInit {
         });
         this.dataLoaded = true;
       });
+  }
+
+  getUserImages() {
+    if (
+      !(
+        this.userImages.find((x) => x.key == this.sender) &&
+        this.userImages.find((x) => x.key == this.receiver)
+      )
+    ) {
+      this.userService.getUserImages(this.userNames).subscribe((response) => {
+        let path = '';
+        Object.keys(response.data).forEach((key) => {
+          var obj1 = response.data[key];
+          Object.keys(obj1).forEach((key1) => {
+            path += obj1[key1];
+          });
+          this.userImages.push({ key: key, value: path });
+          path = '';
+        });
+        this.imageLoaded = true;
+      });
+    }
+  }
+
+  getUserImage(userName: string) {
+    let path = '';
+    this.userImages.forEach((element) => {
+      if (element.key == userName) {
+        path = element.value;
+      }
+    });
+    return path;
   }
 
   sendMessage() {

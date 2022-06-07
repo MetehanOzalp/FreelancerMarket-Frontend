@@ -55,7 +55,10 @@
           </svg>
         </button>
       </div>
-      <app-advert-delete [advert]="advert"></app-advert-delete>
+      <app-advert-delete
+        [advert]="advert"
+        (deletedId)="deleteAdvert($event)"
+      ></app-advert-delete>
       <app-advert-edit [incomingAdvert]="advert"></app-advert-edit>
     </div>
   </div>

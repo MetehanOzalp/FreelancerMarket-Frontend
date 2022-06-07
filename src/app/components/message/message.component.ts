@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { MessageService } from './../../services/message.service';
@@ -13,11 +14,14 @@ export class MessageComponent implements OnInit {
   userName: string;
   selectedUserName: string;
   messages: Array<any>;
+  userImages: Array<any> = [];
   dataLoaded: boolean = false;
+  imageLoaded: boolean = false;
   filterText: string = '';
 
   constructor(
     private router: Router,
+    private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
     private jwtHelperSevice: JwtHelperService
@@ -37,12 +41,14 @@ export class MessageComponent implements OnInit {
 
   getUserMessages() {
     this.messageService.getUserMessages(this.userName).subscribe((response) => {
+      let userNames: string[] = [];
+      userNames.push(this.userName);
       this.messages = response.map((e) => {
+        userNames.push(e.payload.doc.id);
         return {
           id: e.payload.doc.id,
         };
       });
-      this.dataLoaded = true;
       if (this.selectedUserName) {
         var isThere = false;
         this.messages.forEach((element) => {
@@ -52,30 +58,48 @@ export class MessageComponent implements OnInit {
         });
         if (!isThere) {
           this.messages.unshift({ id: this.selectedUserName });
+          userNames.push(this.selectedUserName);
         }
       }
+      this.dataLoaded = true;
+      this.getUserImages(userNames);
     });
+  }
+
+  getUserImages(userNames: string[]) {
+    this.userService.getUserImages(userNames).subscribe((response) => {
+      let path = '';
+      Object.keys(response.data).forEach((key) => {
+        var obj1 = response.data[key];
+        Object.keys(obj1).forEach((key1) => {
+          path += obj1[key1];
+        });
+        this.userImages.push({ key: key, value: path });
+        path = '';
+      });
+      this.imageLoaded = true;
+    });
+  }
+
+  getUserImage(userName: string) {
+    let path = '';
+    this.userImages.forEach((element) => {
+      if (element.key == userName) {
+        path = element.value;
+      }
+    });
+    return path;
   }
 
   selectUserName(userName: any) {
     this.selectedUserName = userName;
     var url = this.router.url;
     if (url.includes('/freelancer/panel/messages')) {
-      this.router
-        .navigateByUrl('/freelancer/panel/messages', {
-          skipLocationChange: true,
-        })
-        .then(() => {
-          this.router.navigate([
-            '/freelancer/panel/messages/' + this.selectedUserName,
-          ]);
-        });
+      this.router.navigate([
+        '/freelancer/panel/messages/' + this.selectedUserName,
+      ]);
     } else {
-      this.router
-        .navigateByUrl('/messages', { skipLocationChange: true })
-        .then(() => {
-          this.router.navigate(['/messages/' + this.selectedUserName]);
-        });
+      this.router.navigate(['/messages/' + this.selectedUserName]);
     }
   }
 }
