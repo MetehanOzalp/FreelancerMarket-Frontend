@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { OrderAddDto } from './../../../models/orderAddDto';
 import { OrderService } from './../../../services/order.service';
@@ -17,6 +18,7 @@ export class OrderAddComponent implements OnInit {
   user: User = {};
 
   constructor(
+    private router: Router,
     private userService: UserService,
     private orderService: OrderService,
     private toastrService: ToastrService,
@@ -41,6 +43,12 @@ export class OrderAddComponent implements OnInit {
           this.toastrService.error(responseError.error.message, 'Hata!');
         }
       );
+    } else {
+      this.toastrService.warning(
+        'Bu işlem için giriş yapmanız gerekmektedir.',
+        'Uyarı!'
+      );
+      this.router.navigate(['/login']);
     }
   }
 

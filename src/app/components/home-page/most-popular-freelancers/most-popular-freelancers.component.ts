@@ -48,9 +48,6 @@ export class MostPopularFreelancersComponent implements OnInit {
   getMostPopularFreelancers() {
     this.freelancerService.getMostPopularFreelancers().subscribe((response) => {
       this.mostPopularFreelancers = response.data;
-      while (this.mostPopularFreelancers.length < 20) {
-        this.mostPopularFreelancers.push(response.data[0]);
-      }
       this.dataLoaded = true;
       this.totalCards = this.mostPopularFreelancers.length;
       this.cardsPerPage = this.getCardsPerPage();

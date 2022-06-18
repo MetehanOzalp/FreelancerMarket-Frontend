@@ -2,7 +2,6 @@ import { AdvertComment } from './../../models/advertComment';
 import { AdvertCommentService } from './../../services/advert-comment.service';
 import { UserService } from './../../services/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { AuthService } from './../../services/auth.service';
 import { Order } from './../../models/order';
 import { OrderService } from './../../services/order.service';
 import { ToastrService } from 'ngx-toastr';

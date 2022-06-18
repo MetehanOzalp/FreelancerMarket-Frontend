@@ -95,20 +95,38 @@
         </div>
       </div>
       <div class="col-md-8">
-        <div class="card shadow mb-3">
-          <div class="card-body">
-            <h5 class="services mt-3">
-              <span style="color: #e83c5f">{{ freelancer.userName }}</span>
-              Kullanıcısının Verdiği Hizmetler
-            </h5>
-            <app-product-card
-              *ngFor="let advert of adverts"
-              style="padding-left: 75px !important"
-              [advert]="advert"
-            ></app-product-card>
+        <div class="card shadow mb-1" id="advertPage">
+          <div class="mb-1">
+            <div class="card-body">
+              <h5 class="services mt-3">
+                <span style="color: #e83c5f">{{ freelancer.userName }}</span>
+                Kullanıcısının Verdiği Hizmetler
+              </h5>
+              <app-product-card
+                *ngFor="
+                  let advert of adverts
+                    | paginate: { itemsPerPage: 4, currentPage: advertPage }
+                "
+                style="padding-left: 75px !important"
+                [advert]="advert"
+              ></app-product-card>
+            </div>
+          </div>
+          <div class="paginator text-center">
+            <pagination-controls
+              (pageChange)="advertPage = $event"
+              (pageChange)="onEditAdvertPage()"
+              previousLabel="Geri"
+              nextLabel="İleri"
+              class="my-pagination text-center"
+            ></pagination-controls>
           </div>
         </div>
-        <div class="card shadow mt-4 mb-3" *ngIf="commentsLoaded">
+        <div
+          class="card shadow mt-4 mb-3"
+          id="commentPage"
+          *ngIf="commentsLoaded"
+        >
           <div class="card-body">
             <h4 class="comments mt-3">Tüm Değerlendirmeler</h4>
           </div>
@@ -130,7 +148,7 @@
           </div>
           <div class="card-body" style="min-height: 775px">
             <div class="row">
-              <div class="mb-3">
+              <div class="mb-1">
                 <div
                   class="card"
                   *ngFor="
@@ -226,6 +244,7 @@
               <div class="paginator text-center">
                 <pagination-controls
                   (pageChange)="commentPage = $event"
+                  (pageChange)="onEditCommentPage()"
                   previousLabel="Geri"
                   nextLabel="İleri"
                   class="my-pagination text-center"

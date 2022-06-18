@@ -4,11 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Employer } from './../../../models/employer';
 import { User } from 'src/app/models/user';
 import { Component, OnInit, Input } from '@angular/core';
-import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpEventType,
-} from '@angular/common/http';
+import { HttpEvent, HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-employer-profile',

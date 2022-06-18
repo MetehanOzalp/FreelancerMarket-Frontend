@@ -1,6 +1,6 @@
 import { SubCategoryService } from './../../services/sub-category.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { SubCategory } from 'src/app/models/subCategory';
 
 @Component({
@@ -15,11 +15,8 @@ export class TopCategoryComponent implements OnInit {
 
   constructor(
     private subCategoryService: SubCategoryService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-  ) {
-    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-  }
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.dataLoaded = false;

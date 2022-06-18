@@ -5,7 +5,7 @@ import { OrderService } from './../../services/order.service';
 import { Order } from './../../models/order';
 import { Advert } from './../../models/advert';
 import { AdvertService } from './../../services/advert.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { Freelancer } from 'src/app/models/freelancer';
 import { User } from 'src/app/models/user';
 import { ToastrService } from 'ngx-toastr';
@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
   selector: 'app-freelancer-detail',
   templateUrl: './freelancer-detail.component.html',
   styleUrls: ['./freelancer-detail.component.css'],
+  providers: [{ provide: Window, useValue: window }],
 })
 export class FreelancerDetailComponent implements OnInit {
   @Input() user: User;
@@ -22,13 +23,16 @@ export class FreelancerDetailComponent implements OnInit {
   advertComments: AdvertComment[] = [];
   orders: Order[] = [];
   commentPage: number = 1;
+  advertPage: number = 1;
   commentsLoaded: boolean = false;
+  advertsLoaded: boolean = false;
 
   constructor(
     private router: Router,
     private orderService: OrderService,
     private advertService: AdvertService,
     private toastrService: ToastrService,
+    @Inject(Window) private window: Window,
     private advertCommentService: AdvertCommentService
   ) {}
 
@@ -108,5 +112,13 @@ export class FreelancerDetailComponent implements OnInit {
 
   sendMessage(userName: string) {
     this.router.navigate(['/messages/' + userName]);
+  }
+
+  onEditAdvertPage() {
+    this.window.document.getElementById('advertPage').scrollIntoView();
+  }
+
+  onEditCommentPage() {
+    this.window.document.getElementById('commentPage').scrollIntoView();
   }
 }

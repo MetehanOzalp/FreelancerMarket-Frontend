@@ -1,13 +1,11 @@
 import { User } from './../../models/user';
 import { UserService } from './../../services/user.service';
 import { AuthService } from './../../services/auth.service';
-import { AdvertSearchFilter } from './../../models/advertSearchFilter';
 import { TopCategoryService } from './../../services/top-category.service';
 import { SubCategoryService } from './../../services/sub-category.service';
 import { SubCategory } from './../../models/subCategory';
 import { TopCategory } from './../../models/topCategory';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({

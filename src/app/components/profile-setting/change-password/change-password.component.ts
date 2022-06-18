@@ -1,7 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from './../../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/models/user';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

@@ -1,7 +1,6 @@
 import { timer } from 'rxjs';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Advert } from './../../../models/advert';
-import { Freelancer } from './../../../models/freelancer';
 import { SubCategoryService } from './../../../services/sub-category.service';
 import { ToastrService } from 'ngx-toastr';
 import { AdvertService } from './../../../services/advert.service';
